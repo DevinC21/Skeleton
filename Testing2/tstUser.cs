@@ -10,10 +10,10 @@ namespace Testing2
         [TestMethod]
         public void InstanceOK()
         {
-            // Create an instance of the class we want to create
-            clsUser AnAddress = new clsUser();
-            // test to see that it exists
-            Assert.IsNotNull(AnAddress);
+            //create an instance of the new class we want to create
+            clsUser AnUser = new clsUser();
+            //test to see that it exists
+            Assert.IsNotNull(AnUser);
         }
     }
 }
