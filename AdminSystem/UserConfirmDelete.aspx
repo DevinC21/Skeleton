@@ -7,10 +7,5 @@
     <title></title>
 </head>
 <body>
-    Lol
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
+    </body>
 </html>
