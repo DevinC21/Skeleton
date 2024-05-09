@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Dynamic;
 
 namespace Testing2
 {
@@ -128,5 +129,55 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AnUser.UserName, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestUserIdFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the User ID
+            if (AnUser.UserID !=1)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        
+
     }
 }
