@@ -38,8 +38,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the CustomerID
         AnUser.CustomerID = Convert.ToInt32(txtCustomerID.Text);
 
-        //capture the CustomerID
-        AnUser.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        //capture the Username
+        AnUser.UserName = txtUserName.Text;
 
         //capture Logged In check box
         AnUser.LoggedIn = chkLoggedIn.Checked;
