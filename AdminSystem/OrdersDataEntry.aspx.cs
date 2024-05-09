@@ -20,12 +20,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order fullname
         AnOrders.OrderFullName = txtOrderFullName.Text;
 
+        //capture the orderId
+        AnOrders.OrderID = Convert.ToInt32(txtOrderID.Text);
+
         //capture the order description
         AnOrders.OrderDescription = txtOrderDescription.Text;
 
         //capture the order date
+        AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
         //capture the payment
+        AnOrders.Payment = chkPayment.Checked;  
 
         //capture the order return
         AnOrders.OrderReturn = txtOrderReturn.Text;

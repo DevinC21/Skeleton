@@ -16,7 +16,10 @@ public partial class _1Viewer : System.Web.UI.Page
             AnOrders = (clsOrders)Session["AnOrders"];
             //display the order fullname for this entry
             Response.Write(AnOrders.OrderFullName);
+            Response.Write(AnOrders.OrderID);
             Response.Write(AnOrders.OrderDescription);
+            Response.Write(AnOrders.OrderDate);
+            Response.Write(AnOrders.Payment);
             Response.Write(AnOrders.OrderReturn);
             Response.Write(AnOrders.OrderStatus);
 
