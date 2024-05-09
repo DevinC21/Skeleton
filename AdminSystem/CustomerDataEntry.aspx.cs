@@ -16,25 +16,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
        //create a new instance of clsCustomer
-       clsCustomer anCustomer = new clsCustomer();
+       clsCustomer AnCustomer = new clsCustomer();
 
         // capture the username
-        anCustomer.CustomerUsername = txtUsername.Text;
+        AnCustomer.CustomerUsername = txtUsername.Text;
 
         // capture the password
-        anCustomer.CustomerPass = txtPassword.Text;
+        AnCustomer.CustomerPass = txtPassword.Text;
 
         // capture the email
-        anCustomer.CustomerEmail = txtEmail.Text;
+        AnCustomer.CustomerEmail = txtEmail.Text;
 
         // capture the Bank Details
-        anCustomer.BankDetails = Convert.ToInt32(txtBankDetails.Text);
+        AnCustomer.BankDetails = Convert.ToInt32(txtBankDetails.Text);
 
         // capture the Confirmed
-        anCustomer.CustomerConfirmed = chkConfirmed.Checked;
+        AnCustomer.CustomerConfirmed = chkConfirmed.Checked;
+
+        //capture the UserDob
+        AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+
+        //capture the CustomerID
+        AnCustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
 
         // store the data in the session object
-        Session["AnCustomer"] = anCustomer;
+        Session["AnCustomer"] = AnCustomer;
 
         // navigate to the view page
         Response.Redirect("CustomerViewer.aspx");

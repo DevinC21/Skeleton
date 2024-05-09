@@ -20,5 +20,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnCustomer.CustomerEmail);
         Response.Write(AnCustomer.BankDetails);
         Response.Write(AnCustomer.CustomerConfirmed);
+        Response.Write(AnCustomer.DateOfBirth);
+        Response.Write(AnCustomer.CustomerId);
     }
 }
