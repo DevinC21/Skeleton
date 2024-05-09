@@ -177,7 +177,173 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
-        
+        [TestMethod]
+        public void TestUserContactnumberFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the User Contact Number
+            if (AnUser.UserContactNumber != 999)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestUserPrivilegesFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the User Privileges
+            if (AnUser.UserPrivileges != "Admin")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestUserDobFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the User DOB
+            if (AnUser.UserDob != Convert.ToDateTime("26/11/2003"))
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerIdFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the Customer ID
+            if (AnUser.CustomerID != 1)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestLoggedInFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the Logged In
+            if (AnUser.LoggedIn != true)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestUserNameFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 UserID = 1;
+
+            //invoke the method
+            Found = AnUser.Find(UserID);
+
+            //check the Username
+            if (AnUser.UserName != "MazdaZohaib")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
 
     }
 }
