@@ -50,4 +50,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("UserViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //creat an instance of the User class
+        clsUser AnUser = new clsUser();
+
+        //create a variable to store the primary key
+        Int32 UserID;
+
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+
+        //get the primary key entered by the user
+        UserID = Convert.ToInt32(txtUserID.Text);
+
+        //find the record
+        Found = AnUser.Find(UserID);
+
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtUserID.Text = AnUser.UserID.ToString();
+            txtUserContactNumber.Text = AnUser.UserContactNumber.ToString();
+            txtCustomerID.Text = AnUser.CustomerID.ToString();
+            txtUserPrivileges.Text = AnUser.UserPrivileges;
+            txtUserName.Text = AnUser.UserName;
+            txtUserDob.Text = AnUser.UserDob.ToString();
+            chkLoggedIn.Checked = AnUser.LoggedIn;
+        }
+    }
 }
