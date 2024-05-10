@@ -132,16 +132,38 @@ namespace ClassLibrary
 
         public bool Find(int UserID)
         {
-            //set the private data members to the test data value
-            mUserID = 1;
-            mUserContactNumber = 999;
-            mCustomerID = 1;
-            mUserPrivileges = "Admin";
-            mUserName = "MazdaZohaib";
-            mUserDob = Convert.ToDateTime("26/11/03");
-            mLoggedIn = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //add the parameter for the User ID to search for
+            DB.AddParameter("@UserID", UserID);
+
+            //execute the stored  procdeure
+            DB.Execute("sproc_tblUser_FilterByUserID");
+
+            //if on record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mUserID = Convert.ToInt32(DB.DataTable.Rows[0]["UserID"]);
+                mUserContactNumber = Convert.ToInt32(DB.DataTable.Rows[0]["UserContactNumber"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mUserPrivileges = Convert.ToString(DB.DataTable.Rows[0]["UserPrivileges"]);
+                mUserName = Convert.ToString(DB.DataTable.Rows[0]["UserName"]);
+                mUserDob = Convert.ToDateTime(DB.DataTable.Rows[0]["UserDob"]);
+                mLoggedIn = Convert.ToBoolean(DB.DataTable.Rows[0]["LoggedIn"]);
+
+                //return that everything worked okay
+                return true;
+            }
+
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+
         }
 
     }

@@ -140,7 +140,7 @@ namespace Testing2
             Boolean Found = false;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
@@ -162,13 +162,13 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
 
             //check the User ID
-            if (AnUser.UserID !=1)
+            if (AnUser.UserID != 7)
             {
                 OK = false;
             }
@@ -190,13 +190,13 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
 
             //check the User Contact Number
-            if (AnUser.UserContactNumber != 999)
+            if (AnUser.UserContactNumber != 748939)
             {
                 OK = false;
             }
@@ -218,7 +218,7 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
@@ -246,13 +246,13 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
 
             //check the User DOB
-            if (AnUser.UserDob != Convert.ToDateTime("26/11/2003"))
+            if (AnUser.UserDob != Convert.ToDateTime("18/07/2022"))
             {
                 OK = false;
             }
@@ -274,13 +274,13 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
 
             //check the Customer ID
-            if (AnUser.CustomerID != 1)
+            if (AnUser.CustomerID != 7)
             {
                 OK = false;
             }
@@ -302,7 +302,7 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 6;
 
             //invoke the method
             Found = AnUser.Find(UserID);
@@ -330,13 +330,13 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 1;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
 
             //check the Username
-            if (AnUser.UserName != "MazdaZohaib")
+            if (AnUser.UserName != "JustinDolly")
             {
                 OK = false;
             }
@@ -344,6 +344,5 @@ namespace Testing2
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-
     }
 }
