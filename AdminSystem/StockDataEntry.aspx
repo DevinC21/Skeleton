@@ -9,45 +9,30 @@
 <body>
     <form id="form1" runat="server">
         
+        <asp:Label ID="lblStockID" runat="server" style="z-index: 1; left: 10px; top: 30px; position: absolute" Text="Stock ID"></asp:Label>
+        <asp:TextBox ID="txtStockID" runat="server" style="z-index: 1; left: 120px; top: 30px; position: absolute"></asp:TextBox>
+
+        <asp:Label ID="lblBrand" runat="server" style="z-index: 1; left: 10px; top: 60px; position: absolute" Text="Brand"></asp:Label>
+        <asp:TextBox ID="txtBrand" runat="server" style="z-index: 1; left: 120px; top: 60px; position: absolute"></asp:TextBox>
+
+        <asp:Label ID="lblColour" runat="server" style="z-index: 1; left: 10px; top: 90px; position: absolute" Text="Colour"></asp:Label>
+        <asp:TextBox ID="txtColour" runat="server" style="z-index: 1; left: 120px; top: 90px; position: absolute"></asp:TextBox>
+
+        <asp:Label ID="lblTypeOfCar" runat="server" style="z-index: 1; left: 10px; top: 120px; position: absolute" Text="Type Of Car"></asp:Label>
+        <asp:TextBox ID="txtTypeOfCar" runat="server" style="z-index: 1; left: 120px; top: 120px; position: absolute"></asp:TextBox>
+
+        <asp:Label ID="lblYearOfCar" runat="server" style="z-index: 1; left: 10px; top: 150px; position: absolute" Text="Year Of Car"></asp:Label>
+        <asp:TextBox ID="txtYearOfCar" runat="server" style="z-index: 1; left: 120px; top: 150px; position: absolute"></asp:TextBox>
+
+        <asp:Label ID="lblPrices" runat="server" style="z-index: 1; left: 10px; top: 180px; position: absolute" Text="Prices"></asp:Label>
+        <asp:TextBox ID="txtPrices" runat="server" style="z-index: 1; left: 120px; top: 180px; position: absolute"></asp:TextBox>
+
+        <asp:CheckBox ID="chkGearbox" runat="server" style="z-index: 1; left: 120px; top: 210px; position: absolute" Text="Gearbox" />
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 240px; position: absolute" Text=""></asp:Label>
+
+        <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 10px; top: 270px; width: 40px; position: absolute" Text="OK" OnClick="btnOK_Click" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 65px; top: 270px; width: 70px; position: absolute" Text="Cancel" />
         
-        <p>
-        <asp:Label ID="lblStockId" runat="server" Text="Stock ID"></asp:Label>
-        <asp:TextBox ID="txtStockId" runat="server"></asp:TextBox>
-        </p>
-
-        <p>
-        <asp:Label ID="lblBrand" runat="server" Text="Brand"></asp:Label>
-        <asp:TextBox ID="txtBrand" runat="server"></asp:TextBox>
-        </p>
-
-        <p>
-        <asp:Label ID="lblColour" runat="server" Text="Colour"></asp:Label>
-        <asp:TextBox ID="txtColour" runat="server"></asp:TextBox>
-        </p>
-
-        <p>
-        <asp:Label ID="lblTypeOfCar" runat="server" Text="Type Of Car"></asp:Label>
-        <asp:TextBox ID="txtTypeOfCar" runat="server"></asp:TextBox>
-        </p>
-
-        <p>
-        <asp:Label ID="lblGearbox" runat="server" Text="Gearbox"></asp:Label>
-        <asp:TextBox ID="txtGearbox" runat="server" OnTextChanged="txtGearbox_TextChanged"></asp:TextBox>
-        </p>
-
-        <p>
-        <asp:Label ID="lblYearOfCar" runat="server" Text="Year Of Car"></asp:Label>
-        <asp:TextBox ID="txtYearOfCar" runat="server"></asp:TextBox>
-        </p>
-
-        <p>
-        <asp:Label ID="lblPrice" runat="server" Text="Price"></asp:Label>
-        <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
-        </p>
-
-        <p>
-        
-        </p>
     </form>
 </body>
 </html>
