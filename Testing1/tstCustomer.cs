@@ -1,12 +1,23 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Security.Cryptography;
 
 namespace Testing1
 {
     [TestClass]
     public class tstCustomer
     {
+
+        //good test data
+        // create some test data to pass the method
+        string Username = "Username";
+        string Password = "Password";
+        string Email = "test@gmail.com";
+        string DateOfBirth = DateTime.Now.ToShortDateString();
+        string BankDetails = "100";
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -122,23 +133,23 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
 
             Boolean Found = false;
-       
+
             Boolean OK = true;
-         
+
             Int32 CustomerId = 8;
-       
+
             Found = AnCustomer.Find(CustomerId);
-          
+
             if (AnCustomer.CustomerId != 8)
             {
                 OK = false;
             }
-         
+
             Assert.IsTrue(OK);
         }
 
         [TestMethod]
-        public void TestDateOfBirthFound() 
+        public void TestDateOfBirthFound()
         {
             clsCustomer AnCustomer = new clsCustomer();
 
@@ -150,7 +161,7 @@ namespace Testing1
 
             Found = AnCustomer.Find(CustomerId);
 
-            if(AnCustomer.DateOfBirth != Convert.ToDateTime("10/10/2000"))
+            if (AnCustomer.DateOfBirth != Convert.ToDateTime("10/10/2000"))
             {
                 OK = false;
             }
@@ -160,17 +171,17 @@ namespace Testing1
         [TestMethod]
         public void TestCustomerUsernameFound()
         {
-           
+
             clsCustomer AnCustomer = new clsCustomer();
-           
+
             Boolean Found = false;
-           
+
             Boolean OK = true;
-            
+
             Int32 CustomerId = 8;
-          
+
             Found = AnCustomer.Find(CustomerId);
-          
+
             if (AnCustomer.CustomerUsername != "Username")
             {
                 OK = false;
@@ -264,6 +275,17 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+
+            String Error = "";
+
+            Error = AnCustomer.Valid(Username, Password, Email, DateOfBirth, BankDetails);
+
+            Assert.AreEqual(Error, "");
+        }
 
     }
 }
