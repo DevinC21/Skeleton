@@ -133,5 +133,10 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string username, string password, string email, string dateOfBirth, string bankDetails)
+        {
+            return "";
+        }
     }
 }
