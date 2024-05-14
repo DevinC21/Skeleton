@@ -108,7 +108,7 @@ namespace Testing1
 
             Boolean Found = false;
 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
 
             Found = AnCustomer.Find(CustomerId);
 
@@ -125,11 +125,11 @@ namespace Testing1
        
             Boolean OK = true;
          
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
        
             Found = AnCustomer.Find(CustomerId);
           
-            if (AnCustomer.CustomerId != 21)
+            if (AnCustomer.CustomerId != 8)
             {
                 OK = false;
             }
@@ -146,11 +146,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
 
             Found = AnCustomer.Find(CustomerId);
 
-            if(AnCustomer.DateOfBirth != Convert.ToDateTime("23/12/2022"))
+            if(AnCustomer.DateOfBirth != Convert.ToDateTime("10/10/2000"))
             {
                 OK = false;
             }
@@ -167,11 +167,11 @@ namespace Testing1
            
             Boolean OK = true;
             
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
           
             Found = AnCustomer.Find(CustomerId);
           
-            if (AnCustomer.CustomerUsername != "Charlie")
+            if (AnCustomer.CustomerUsername != "Username")
             {
                 OK = false;
             }
@@ -188,7 +188,7 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
 
             Found = AnCustomer.Find(CustomerId);
 
@@ -209,11 +209,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
 
             Found = AnCustomer.Find(CustomerId);
 
-            if (AnCustomer.CustomerEmail != "example@gmail.com")
+            if (AnCustomer.CustomerEmail != "Hello@gmail.com")
             {
                 OK = false;
             }
@@ -230,11 +230,11 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
 
             Found = AnCustomer.Find(CustomerId);
 
-            if (AnCustomer.BankDetails != 1001001)
+            if (AnCustomer.BankDetails != 100100)
             {
                 OK = false;
             }
@@ -252,7 +252,7 @@ namespace Testing1
 
             Boolean OK = true;
 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
 
             Found = AnCustomer.Find(CustomerId);
 
