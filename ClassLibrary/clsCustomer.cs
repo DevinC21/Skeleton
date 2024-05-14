@@ -10,8 +10,8 @@ namespace ClassLibrary
 
         // customer Id public property
         public Int32 CustomerId
-        { 
-         get
+        {
+            get
             {
                 return mCustomerId;
             }
@@ -99,16 +99,39 @@ namespace ClassLibrary
         }
 
 
-        public bool Find(int customerId)
+        public bool Find(int CustomerId)
         {
-            mCustomerId = 21;
-            mDateOfBirth = Convert.ToDateTime("23/12/2022");
-            mCustomerUsername = "Charlie";
-            mCustomerPass = "Password";
-            mCustomerEmail = "example@gmail.com";
-            mBankDetails = 1001001;
-            mCustomerConfirmed = true;
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //add the parameter for the User ID to search for
+            DB.AddParameter("@CustomerId", CustomerId);
+
+            //execute the stored  procdeure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+
+            //if on record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mCustomerUsername = Convert.ToString(DB.DataTable.Rows[0]["CustomerUsername"]);
+                mCustomerPass = Convert.ToString(DB.DataTable.Rows[0]["CustomerPass"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mBankDetails = Convert.ToInt32(DB.DataTable.Rows[0]["BankDetails"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                mCustomerConfirmed = Convert.ToBoolean(DB.DataTable.Rows[0]["CustomerConfirmed"]);
+
+                //return that everything worked okay
+                return true;
+            }
+
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
 }

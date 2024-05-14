@@ -45,4 +45,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // navigate to the view page
         Response.Redirect("CustomerViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsCustomer AnCustomer = new clsCustomer();
+
+        Int32 CustomerId;
+
+        Boolean Found = false;
+
+        CustomerId = Convert.ToInt32(txtCustomerId.Text);
+
+        Found = AnCustomer.Find(CustomerId);
+
+        if (Found == true)
+        {
+            txtUsername.Text = AnCustomer.CustomerUsername;
+            txtPassword.Text = AnCustomer.CustomerPass;
+            txtEmail.Text = AnCustomer.CustomerEmail;
+            txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
+            txtBankDetails.Text = AnCustomer.BankDetails.ToString();
+            chkConfirmed.Checked = AnCustomer.CustomerConfirmed;
+        }
+    }
 }
