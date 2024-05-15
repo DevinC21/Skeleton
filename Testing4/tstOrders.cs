@@ -7,6 +7,7 @@ namespace Testing4
     [TestClass]
     public class tstOrder
     {
+       
         [TestMethod]
         public void InstanceOK()
         {
@@ -126,49 +127,213 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrders AnOrders = new clsOrders();
 
-            //create a boolean variable to store the results of the validation
+            //create a Boolean variable to store te results of the validation
             Boolean Found = false;
 
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 11;
 
             //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //test to see that the results are true
+            //test to see if the result is true
             Assert.IsTrue(Found);
-
         }
+
         [TestMethod]
-        public void TestOrderIdfound()
+        public void TestOrderIdFound()
         {
             //create an instance of the class we want to create
             clsOrders AnOrders = new clsOrders();
 
-
-            //create a boolean variable to store the result of the search
+            //create a Boolean variable to store te results of the validation
             Boolean Found = false;
 
-            //create a boolean variable to record if the data is OK (assume it is)
+            //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
 
-            //create some test data to use with this method
-            Int32 OrderID = 21;
+            //create some test data to use with the method
+            Int32 OrderID = 11;
 
-            //invoke this method
+            //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //check the order id
-            if (AnOrders.OrderID != 21)
+            //check the User ID
+            if (AnOrders.OrderID != 11)
             {
                 OK = false;
             }
 
-            //test to see that the results are correct
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderFullNameFound()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderID = 11;
+
+            //invoke the method
+            Found = AnOrders.Find(OrderID);
+
+            //check the User Contact Number
+            if (AnOrders.OrderFullName != "Peter Finkley")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDescriptionFound()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderID = 11;
+
+            //invoke the method
+            Found = AnOrders.Find(OrderID);
+
+            //check the User Privileges
+            if (AnOrders.OrderDescription != "good")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderID = 11;
+
+            //invoke the method
+            Found = AnOrders.Find(OrderID);
+
+            //check the User DOB
+            if (AnOrders.OrderDate != Convert.ToDateTime("03/05/2024"))
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPaymentFound()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderID = 11;
+
+            //invoke the method
+            Found = AnOrders.Find(OrderID);
+
+            //check the Customer ID
+            if (AnOrders.Payment != true)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderReturnFound()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderID = 11;
+
+            //invoke the method
+            Found = AnOrders.Find(OrderID);
+
+            //check the Logged In
+            if (AnOrders.OrderReturn != "No")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderStatusFound()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+
+            //create a Boolean variable to store te results of the validation
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderID = 11;
+
+            //invoke the method
+            Found = AnOrders.Find(OrderID);
+
+            //check the Username
+            if (AnOrders.OrderStatus != "Accepted")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
             Assert.IsTrue(OK);
         }
     }
- }
-
-
-
+}

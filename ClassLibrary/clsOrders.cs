@@ -96,14 +96,29 @@ namespace ClassLibrary
         public bool Find(int OrderID)
         {
 
-            mOrderID = 21;
-            mOrderFullName = "Full Name";
-            mOrderDescription = "Order Description";
-            mOrderDate = Convert.ToDateTime("09/05/2024");
-            mPayment = true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", OrderID);
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            if (DB.Count == 1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mOrderFullName = Convert.ToString(DB.DataTable.Rows[0]["OrderFullName"]);
+                mOrderDescription = Convert.ToString(DB.DataTable.Rows[0]["OrderDescription"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mPayment = Convert.ToBoolean(DB.DataTable.Rows[0]["Payment"]);
+                mOrderReturn = Convert.ToString(DB.DataTable.Rows[0]["OrderReturn"]);
+                mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
 
-            return true;
 
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
+    
+

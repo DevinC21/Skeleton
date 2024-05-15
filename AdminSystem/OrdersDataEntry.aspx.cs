@@ -49,5 +49,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("OrdersViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrders AnOrders = new clsOrders();
+        Int32 OrderID;
+        Boolean Found = false;
+        OrderID = Convert.ToInt32(txtOrderID.Text);
+        Found = AnOrders.Find(OrderID);
+        if (Found == true)
+        {
+            txtOrderID.Text = AnOrders.OrderID.ToString();
+            txtOrderFullName.Text = AnOrders.OrderFullName.ToString();
+            txtOrderDescription.Text = AnOrders.OrderDescription;
+            txtOrderDate.Text = AnOrders.OrderDate.ToString();
+            chkPayment.Checked = AnOrders.Payment;
+            txtOrderReturn.Text = AnOrders.OrderReturn;
+            txtOrderStatus.Text = AnOrders.OrderStatus;
+        }
+
+    }
+
+    protected void chkPayment_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }
 
