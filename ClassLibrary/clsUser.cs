@@ -166,5 +166,74 @@ namespace ClassLibrary
 
         }
 
+        public string Valid(string userPrivileges, string userDob, string userName)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if the Username is blank
+            if (userName.Length < 5)
+            {
+                //record the error
+                Error = Error + "The username may be blank : ";
+            }
+
+            //if the Username is greater than 20 characters
+            if (userName.Length > 20)
+            {
+                //record the error
+                Error = Error + "The username must be less than 20 characters :";
+            }
+            
+            //if the User Privileges is less than 4 characters
+            if (userPrivileges.Length < 4)
+            {
+                //record the error
+                Error = Error + "The username must contain at least 4 characters : ";
+            }
+
+            //if the User Privileges is greater than 5 characters
+            if (userPrivileges.Length > 5)
+            {
+                //record the error
+                Error = Error + "The username must be less than 6 characters :";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the UserDob value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(userDob);
+
+                //check to see if the date is more than 100 years ago
+                if (DateTemp < DateComp.AddYears(-100))
+                {
+                    //record the error
+                    Error = Error + "The date cannot be more than 100 years ago : ";
+                }
+
+                //check to see if the date is less than 12 years ago
+                if (DateTemp > DateComp.AddYears(-12))
+                {
+                    //record the error
+                    Error = Error + "The date cannot be less than 12 years ago : ";
+                }
+            }
+            
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //return any error messages
+            return Error;
+        }
     }
 }
