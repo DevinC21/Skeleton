@@ -2,12 +2,19 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Dynamic;
+using System.IO;
 
 namespace Testing2
 {
     [TestClass]
     public class tstUser
     {
+        //good test data
+        //create some test data to pass the method
+        string UserPrivileges = "Admin";
+        string UserDob = "11/11/1990";
+        string UserName = "Justin Dolly";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -343,6 +350,383 @@ namespace Testing2
 
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            string Error = "";
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges,UserDob,UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            String UserName = "aaaa"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "aaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "aaaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "aaaaaaaaaaaaaaaaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "aaaaaaaaaaaaaaaaaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "aaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "";
+            UserName = UserName.PadRight(500, 'a'); //this should fail
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserNameMid()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "aaaaaaaaaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            String UserPrivileges = "aaa"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "aaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "aaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "aaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "aaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "aaaaaa"; //this should be ok
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "aaaaaaaaaa"; //this should fail
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 12 years ago
+            TestDate = DateTime.Now.Date.AddYears(-12);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 100 years ago
+            TestDate = DateTime.Now.Date.AddYears(-100);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //set the User DOB to a non date value
+            string UserDob = "this is not a date!";
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }

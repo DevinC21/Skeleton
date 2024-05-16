@@ -28,6 +28,9 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the User DOB for this entry
         Response.Write(AnUser.UserDob);
 
+        //display the Logged In for this entry
+        Response.Write(AnUser.LoggedIn);
+
         //display the Customer ID for this entry
         Response.Write(AnUser.CustomerID);
 
