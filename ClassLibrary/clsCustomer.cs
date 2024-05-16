@@ -136,7 +136,19 @@ namespace ClassLibrary
 
         public string Valid(string username, string password, string email, string dateOfBirth, string bankDetails)
         {
-            return "";
+            String Error = "";
+
+            if (username.Length == 0)
+            {
+                Error = Error + "The Username may not be blank : ";
+            }
+
+            if (username.Length > 20)
+            {
+                Error = Error + "The Username must be less than 20 characters : ";
+            }
+            return Error;
         }
+
     }
 }
