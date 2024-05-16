@@ -11,9 +11,9 @@ namespace Testing1
 
         //good test data
         // create some test data to pass the method
-        string Username = "Username";
-        string Password = "Password";
-        string Email = "test@gmail.com";
+        string CustomerUsername = "Username";
+        string CustomerPassword = "Password";
+        string CustomerEmail = "test@gmail.com";
         string DateOfBirth = DateTime.Now.ToShortDateString();
         string BankDetails = "100";
 
@@ -282,9 +282,91 @@ namespace Testing1
 
             String Error = "";
 
-            Error = AnCustomer.Valid(Username, Password, Email, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
 
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "a";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "aa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "aaaaaaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMaxLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "aaaaaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMaxPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "aaaaaaaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMid()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "aaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "";
+            CustomerUsername = CustomerUsername.PadRight(500, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameExtremeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "";
+            CustomerUsername = CustomerUsername.PadLeft(500, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
         }
 
     }
