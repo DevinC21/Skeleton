@@ -118,7 +118,33 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+
+
+
+
+
+        public string Valid(string orderFullName, string orderDescription, string orderReturn, string orderStatus, string orderDate)
+        {
+            String Error = "";
+            if (orderFullName.Length < 1)
+            {
+                Error = Error + "The order fullname must be more than one character : ";
+            }
+            if (orderFullName.Length > 16)
+            {
+                Error = Error + "The order fullname must be less than 6 characters : ";
+            }
+           
+            return Error;
+        }
     }
-}
     
+}
+
+
+
+
+
+
 

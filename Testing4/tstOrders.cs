@@ -3,11 +3,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Testing4
-    {
+{
     [TestClass]
     public class tstOrder
     {
-       
+        string OrderFullName = "FullName";
+        string OrderDescription = "Order Description";
+        string OrderReturn = "Order Return";
+        string OrderStatus = "Order Status";
+        string OrderDate = DateTime.Now.ToShortDateString();
+
+
+
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -335,5 +344,94 @@ namespace Testing4
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrders AnOrders = new clsOrders();
+            string Error = "";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderFullNameMinLessOne()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderFullNameMin()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "a";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderFullNameMinPlusOne()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "aa";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderFullNameMaxLessOne()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "aaaaaaaaaaaaaaa";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderFullNameMax()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "aaaaaaaaaaaaaaaa";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderFullNameMid()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "aaaaaaaaaa";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderFullNameMaxPlusOne()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "aaaaaaaaaaaaaaaaaaa";
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderFullNameExtremeMax()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "";
+            OrderFullName = OrderFullName.PadRight(100, 'a');
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
+
+
+
+
