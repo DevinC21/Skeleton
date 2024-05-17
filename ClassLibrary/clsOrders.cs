@@ -127,15 +127,58 @@ namespace ClassLibrary
         public string Valid(string orderFullName, string orderDescription, string orderReturn, string orderStatus, string orderDate)
         {
             String Error = "";
+            DateTime DateTemp;
             if (orderFullName.Length < 1)
             {
                 Error = Error + "The order fullname must be more than one character : ";
             }
             if (orderFullName.Length > 16)
             {
-                Error = Error + "The order fullname must be less than 6 characters : ";
+                Error = Error + "The order fullname must be less than 16 characters : ";
             }
-           
+            if (orderDescription.Length < 1)
+            {
+                Error = Error + "The order description must be more than one character : ";
+            }
+            if (orderDescription.Length > 30)
+            {
+                Error = Error + "The order description must be less than 30 characters : ";
+            }
+            if (orderReturn.Length< 1)
+            {
+                Error = Error + "The order return must be more than one character : ";
+            }
+            if (orderReturn.Length > 20)
+            {
+                Error = Error + "The order return must be less than 20 characters : ";
+            }
+            if (orderStatus.Length < 1)
+            {
+                Error = Error + "The order status must be more than one character : ";
+            }
+            if (orderStatus.Length > 20)
+            {
+                Error = Error + "The order status must be less than 20 characters : ";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(orderDate);
+
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The order date cannot be in the past : ";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The order date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The order date was not a valid date : ";
+            }
             return Error;
         }
     }
