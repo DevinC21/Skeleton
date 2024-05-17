@@ -166,7 +166,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string userPrivileges, string userDob, string userName)
+        public string Valid(string userPrivileges, string userDob, string userName, string userContactNumber)
         {
             //create a string variable to store the error
             String Error = "";
@@ -231,6 +231,20 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date was not a valid date : ";
             }
+
+                //if the User Contact Number is less than 9 characters
+                if (userContactNumber.Length < 9)
+                {
+                    //record the error
+                    Error = Error + "The Contact Number is too small. It must be 9 integers : ";
+                }
+
+                //if the User Contact Number is greater than 8 characters
+                if (userContactNumber.Length > 9)
+                {
+                    //record the error
+                    Error = Error + "The Contact Number is too large. It must be 9 integers : ";
+                }
 
             //return any error messages
             return Error;
