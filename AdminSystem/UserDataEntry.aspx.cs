@@ -24,31 +24,53 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsUser AnUser = new clsUser();
 
         //capture the UserID
-        AnUser.UserID = Convert.ToInt32(txtUserID.Text);
+        string UserID = txtUserID.Text;
 
         //capture the UserContactNumber
-        AnUser.UserContactNumber = Convert.ToInt32(txtUserContactNumber.Text);
+        string UserContactNumber = txtUserContactNumber.Text;
 
         //capture the UserPrivileges
-        AnUser.UserPrivileges = txtUserPrivileges.Text;
+        string UserPrivileges = txtUserPrivileges.Text;
 
         //capture the UserDob
-        AnUser.UserDob = Convert.ToDateTime(txtUserDob.Text);
+        string UserDob = txtUserDob.Text;
 
         //capture the CustomerID
-        AnUser.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        string CustomerID = txtCustomerID.Text;
 
         //capture the Username
-        AnUser.UserName = txtUserName.Text;
+        string UserName = txtUserName.Text;
 
         //capture Logged In check box
-        AnUser.LoggedIn = chkLoggedIn.Checked;
+        string LoggedIn = chkLoggedIn.Text;
 
-        //store the address in the session object
-        Session["AnUser"] = AnUser;
+        //variable to store any error messages
+        string Error = "";
 
-        //navigate to the view page
-        Response.Redirect("UserViewer.aspx");
+        //validate the data
+        Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+        if (Error == "")
+        {
+            //capture the UserPrivileges
+            AnUser.UserPrivileges = txtUserPrivileges.Text;
+
+            //capture the UserDob
+            AnUser.UserDob = Convert.ToDateTime(txtUserDob.Text);
+
+            //capture the Username
+            AnUser.UserName = txtUserName.Text;
+
+            //store the address in the session object
+            Session["AnUser"] = AnUser;
+
+            //navigate to the view page
+            Response.Redirect("UserViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

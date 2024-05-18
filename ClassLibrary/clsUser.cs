@@ -166,7 +166,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string userPrivileges, string userDob, string userName, string userContactNumber)
+        public string Valid(string userPrivileges, string userDob, string userName)
         {
             //create a string variable to store the error
             String Error = "";
@@ -174,32 +174,32 @@ namespace ClassLibrary
             //create a temporary variable to store the date values
             DateTime DateTemp;
 
-            //if the Username is blank
-            if (userName.Length < 5)
+            //if the Username is less than 5 characters
+            if (userName.Length <= 4)
             {
                 //record the error
-                Error = Error + "The username may be blank : ";
+                Error = Error + "The Username must be more than 5 characters. ";
             }
 
             //if the Username is greater than 20 characters
-            if (userName.Length > 20)
+            if (userName.Length >= 21)
             {
                 //record the error
-                Error = Error + "The username must be less than 20 characters :";
+                Error = Error + "The Username must be less than 20 characters. ";
             }
             
             //if the User Privileges is less than 4 characters
-            if (userPrivileges.Length < 4)
+            if (userPrivileges.Length <= 3)
             {
                 //record the error
-                Error = Error + "The username must contain at least 4 characters : ";
+                Error = Error + "The User Privilege must contain at least 4 characters. ";
             }
 
             //if the User Privileges is greater than 5 characters
-            if (userPrivileges.Length > 5)
+            if (userPrivileges.Length >= 6)
             {
                 //record the error
-                Error = Error + "The username must be less than 6 characters :";
+                Error = Error + "The User Privilege must be less than 6 characters. ";
             }
 
             //create an instance of DateTime to compare with DateTemp
@@ -215,36 +215,22 @@ namespace ClassLibrary
                 if (DateTemp < DateComp.AddYears(-100))
                 {
                     //record the error
-                    Error = Error + "The date cannot be more than 100 years ago : ";
+                    Error = Error + "The Date cannot be more than 100 years ago. ";
                 }
 
                 //check to see if the date is less than 12 years ago
                 if (DateTemp > DateComp.AddYears(-12))
                 {
                     //record the error
-                    Error = Error + "The date cannot be less than 12 years ago : ";
+                    Error = Error + "The Date cannot be less than 12 years ago. ";
                 }
             }
-            
+
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "The Date was not a valid date. ";
             }
-
-                //if the User Contact Number is less than 9 characters
-                if (userContactNumber.Length < 9)
-                {
-                    //record the error
-                    Error = Error + "The Contact Number is too small. It must be 9 integers : ";
-                }
-
-                //if the User Contact Number is greater than 8 characters
-                if (userContactNumber.Length > 9)
-                {
-                    //record the error
-                    Error = Error + "The Contact Number is too large. It must be 9 integers : ";
-                }
 
             //return any error messages
             return Error;
