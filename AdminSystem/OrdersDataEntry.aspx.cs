@@ -18,36 +18,51 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrders
         clsOrders AnOrders = new clsOrders();
         //capture the order fullname
-        AnOrders.OrderFullName = txtOrderFullName.Text;
+        string OrderFullName = txtOrderFullName.Text;
 
         //capture the orderId
-        AnOrders.OrderID = Convert.ToInt32(txtOrderID.Text);
+        string OrderID = txtOrderID.Text;
 
         //capture the order description
-        AnOrders.OrderDescription = txtOrderDescription.Text;
+        string OrderDescription = txtOrderDescription.Text;
 
         //capture the order date
-        AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
+        string OrderDate = txtOrderDate.Text;
 
         //capture the payment
-        AnOrders.Payment = chkPayment.Checked;  
+        string Payment = chkPayment.Text;
 
         //capture the order return
-        AnOrders.OrderReturn = txtOrderReturn.Text;
+        string OrderReturn = txtOrderReturn.Text;
 
         //capture the order description
-        AnOrders.OrderStatus = txtOrderStatus.Text;
+        string OrderStatus = txtOrderStatus.Text;
 
+        string Error = "";
 
+        Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+        if (Error == "")
+        {
+            AnOrders.OrderFullName = txtOrderFullName.Text;
 
+            AnOrders.OrderDescription = txtOrderDescription.Text;
 
+            AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
+            AnOrders.OrderReturn = txtOrderReturn.Text;
 
+            AnOrders.OrderStatus = txtOrderStatus.Text;
 
-        //store the orders in the session object
-        Session["AnOrders"] = AnOrders;
-        //navigate to the view page
-        Response.Redirect("OrdersViewer.aspx");
+            //store the orders in the session object
+            Session["AnOrders"] = AnOrders;
+            //navigate to the view page
+            Response.Redirect("OrdersViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -60,7 +75,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             txtOrderID.Text = AnOrders.OrderID.ToString();
-            txtOrderFullName.Text = AnOrders.OrderFullName.ToString();
+            txtOrderFullName.Text = AnOrders.OrderFullName;
             txtOrderDescription.Text = AnOrders.OrderDescription;
             txtOrderDate.Text = AnOrders.OrderDate.ToString();
             chkPayment.Checked = AnOrders.Payment;
@@ -75,4 +90,3 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 }
-
