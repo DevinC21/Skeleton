@@ -109,9 +109,7 @@ namespace ClassLibrary
                 mOrderReturn = Convert.ToString(DB.DataTable.Rows[0]["OrderReturn"]);
                 mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
 
-
                 return true;
-
             }
             else
             {
@@ -119,75 +117,101 @@ namespace ClassLibrary
             }
         }
 
-
-
-
-
-
         public string Valid(string orderFullName, string orderDescription, string orderReturn, string orderStatus, string orderDate)
         {
             String Error = "";
+
+            //create a temporary variable to store the date values
             DateTime DateTemp;
-            if (orderFullName.Length < 1)
+
+            //if the Username is less than 3 characters
+            if (orderFullName.Length <= 2)
             {
-                Error = Error + "The order fullname must be more than one character : ";
+                //record the error
+                Error = Error + "The Order FullName must be more than 2 characters. ";
             }
-            if (orderFullName.Length > 16)
+
+            //if the Username is greater than 20 characters
+            if (orderFullName.Length >= 21)
             {
-                Error = Error + "The order fullname must be less than 16 characters : ";
+                //record the error
+                Error = Error + "The Order FullName must be less than 21 characters. ";
             }
-            if (orderDescription.Length < 1)
+
+            //if the User Privileges is less than 3 characters
+            if (orderDescription.Length <= 2)
             {
-                Error = Error + "The order description must be more than one character : ";
+                //record the error
+                Error = Error + "The Order Description must contain at least 4 characters. ";
             }
-            if (orderDescription.Length > 30)
+
+            //if the User Privileges is greater than 12 characters
+            if (orderDescription.Length >= 13)
             {
-                Error = Error + "The order description must be less than 30 characters : ";
+                //record the error
+                Error = Error + "The Order Description must be less than 13 characters. ";
             }
-            if (orderReturn.Length< 1)
+
+            if (orderReturn.Length <= 1)
             {
-                Error = Error + "The order return must be more than one character : ";
+                //record the error
+                Error = Error + "The Order Return must contain at least 2 characters. ";
             }
-            if (orderReturn.Length > 20)
+
+            //if the order return is greater than 10 characters
+            if (orderReturn.Length >= 11)
             {
-                Error = Error + "The order return must be less than 20 characters : ";
+                //record the error
+                Error = Error + "The Order Return must be less than 11 characters. ";
             }
-            if (orderStatus.Length < 1)
+
+            if (orderStatus.Length <= 5)
             {
-                Error = Error + "The order status must be more than one character : ";
+                //record the error
+                Error = Error + "The Order Status must contain at least 6 characters. ";
             }
-            if (orderStatus.Length > 20)
+
+            //if the User Privileges is greater than 5 characters
+            if (orderStatus.Length >= 16)
             {
-                Error = Error + "The order status must be less than 20 characters : ";
+                //record the error
+                Error = Error + "The Order Status must be less than 16 characters. ";
             }
+
+
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statement
             DateTime DateComp = DateTime.Now.Date;
 
             try
             {
+                //copy the UserDob value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(orderDate);
 
-                if (DateTemp < DateComp)
+                //check to see if the date is more than 1 years ago
+                if (DateTemp < DateComp.AddYears(-1))
                 {
-                    Error = Error + "The order date cannot be in the past : ";
+                    //record the error
+                    Error = Error + "The Date cannot be more than 1 year ago. ";
                 }
+
+                //check to see if the date is less than 1 years ago
                 if (DateTemp > DateComp)
                 {
-                    Error = Error + "The order date cannot be in the future : ";
+                    //record the error
+                    Error = Error + "The Date cannot be after today. ";
                 }
             }
+
             catch
             {
-                Error = Error + "The order date was not a valid date : ";
+                //record the error
+                Error = Error + "The Date was not a valid date. ";
             }
+
+            //return any error messages
             return Error;
         }
     }
-    
 }
-
-
-
-
-
-
-

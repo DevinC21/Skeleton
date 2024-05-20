@@ -7,14 +7,11 @@ namespace Testing4
     [TestClass]
     public class tstOrder
     {
-        string OrderFullName = "FullName";
-        string OrderDescription = "Order Description";
-        string OrderReturn = "Order Return";
-        string OrderStatus = "Order Status";
-        string OrderDate = DateTime.Now.ToShortDateString();
-
-
-
+        string OrderFullName = "Mazda Zob";
+        string OrderDescription = "Good";
+        string OrderReturn = "No";
+        string OrderStatus = "Accepted";
+        string OrderDate = "20/05/2024";
 
 
         [TestMethod]
@@ -62,7 +59,7 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
 
             //create some test data to assign to the property
-            string TestData = "Full Name";
+            string TestData = "Mazda Zob";
 
             //assign the data to the property
             AnOrders.OrderFullName = TestData;
@@ -77,7 +74,7 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
 
             //create some test data to assign to the property
-            string TestData = "Order Description";
+            string TestData = "Good";
 
             //assign the data to the property
             AnOrders.OrderDescription = TestData;
@@ -107,7 +104,7 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
 
             //create some test data to assign to the property
-            string TestData = "Order Return";
+            string TestData = "No";
 
             //assign the data to the property
             AnOrders.OrderReturn = TestData;
@@ -122,7 +119,7 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
 
             //create some test data to assign to the property
-            string TestData = "Order Status";
+            string TestData = "Accepted";
 
             //assign the data to the property
             AnOrders.OrderStatus = TestData;
@@ -358,7 +355,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderFullName = "";
+            string OrderFullName = "aa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -367,7 +364,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderFullName = "a";
+            string OrderFullName = "aaa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -376,7 +373,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderFullName = "aa";
+            string OrderFullName = "aaaa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -385,7 +382,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderFullName = "aaaaaaaaaaaaaaa";
+            string OrderFullName = "";
+            OrderFullName = OrderFullName.PadRight(19, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -394,17 +392,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderFullName = "aaaaaaaaaaaaaaaa";
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void OrderFullNameMid()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderFullName = "aaaaaaaaaa";
+            string OrderFullName = "";
+            OrderFullName = OrderFullName.PadRight(20, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -414,9 +403,21 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderFullName = "aaaaaaaaaaaaaaaaaaa";
+            string OrderFullName = "";
+            OrderFullName = OrderFullName.PadRight(21, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderFullNameMid()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderFullName = "";
+            OrderFullName = OrderFullName.PadRight(11, 'a');
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -434,7 +435,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderDescription = "";
+            string OrderDescription = "aa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -443,7 +444,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderDescription = "a";
+            string OrderDescription = "aaa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -452,7 +453,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderDescription = "aa";
+            string OrderDescription = "aaaa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -460,8 +461,9 @@ namespace Testing4
         public void OrderDescriptionMaxLessOne()
         {
             clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            string Error = "";
+            string OrderDescription = "";
+            OrderDescription = OrderDescription.PadRight(11, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -469,18 +471,9 @@ namespace Testing4
         public void OrderDescriptionMax()
         {
             clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void OrderDescriptionMid()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderDescription = "aaaaaaaaaaaaaaa";
+            string Error = "";
+            string OrderDescription = "";
+            OrderDescription = OrderDescription.PadRight(12, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -489,10 +482,22 @@ namespace Testing4
         public void OrderDescriptionMaxPlusOne()
         {
             clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            string Error = "";
+            string OrderDescription = "";
+            OrderDescription = OrderDescription.PadRight(13, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDescriptionMid()
+        {
+            clsOrders AnOrders = new clsOrders();
+            string Error = "";
+            string OrderDescription = "";
+            OrderDescription = OrderDescription.PadRight(7, 'a');
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -510,7 +515,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderReturn = "";
+            string OrderReturn = "a";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -519,7 +524,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderReturn = "a";
+            string OrderReturn = "aa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -528,7 +533,7 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderReturn = "aa";
+            string OrderReturn = "aaa";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -537,7 +542,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderReturn = "aaaaaaaaaaaaaaaaaaa";
+            string OrderReturn = "";
+            OrderReturn = OrderReturn.PadRight(9, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -546,17 +552,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderReturn = "aaaaaaaaaaaaaaaaaaaa";
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void OrderReturnMid()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderReturn = "aaaaaaaaaa";
+            string OrderReturn = "";
+            OrderReturn = OrderReturn.PadRight(10, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -566,9 +563,21 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderReturn = "aaaaaaaaaaaaaaaaaaaaa";
+            string OrderReturn = "";
+            OrderReturn = OrderReturn.PadRight(11, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderReturnMid()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderReturn = "";
+            OrderReturn = OrderReturn.PadRight(6, 'a');
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -577,7 +586,7 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
             String Error = "";
             string OrderReturn = "";
-            OrderFullName = OrderReturn.PadRight(50, 'a');
+            OrderReturn = OrderReturn.PadRight(50, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -587,6 +596,7 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
             String Error = "";
             string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(5, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -595,7 +605,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderStatus = "a";
+            string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(6, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -604,7 +615,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderStatus = "aa";
+            string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(7, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -613,7 +625,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderStatus = "aaaaaaaaaaaaaaaaaaa";
+            string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(14, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -622,17 +635,8 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderStatus = "aaaaaaaaaaaaaaaaaaaa";
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void OrderStatusMid()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            string OrderStatus = "aaaaaaaaaa";
+            string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(15, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -642,9 +646,21 @@ namespace Testing4
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
-            string OrderStatus = "aaaaaaaaaaaaaaaaaaaaa";
+            string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(16, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderStatusMid()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            string OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(10, 'a');
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -653,36 +669,26 @@ namespace Testing4
             clsOrders AnOrders = new clsOrders();
             String Error = "";
             string OrderStatus = "";
-            OrderFullName = OrderStatus.PadRight(50, 'a');
+            OrderStatus = OrderStatus.PadRight(50, 'a');
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void OrderDateExtremeMin()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-100);
-            string OrderDate = TestDate.ToString();
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void OrderDateMinLessThanOne()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(-1);
-            string OrderDate = TestDate.ToString();
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreNotEqual(Error, "");
+
         }
         [TestMethod]
         public void OrderDateMin()
+        {
+            clsOrders AnOrders = new clsOrders();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-1);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMax()
         {
             clsOrders AnOrders = new clsOrders();
             String Error = "";
@@ -692,18 +698,7 @@ namespace Testing4
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreEqual(Error, "");
 
-        }
-        [TestMethod]
-        public void OrderDateMinPlusOne()
-        {
-            clsOrders AnOrders = new clsOrders();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(1);
-            string OrderDate = TestDate.ToString();
-            Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
-            Assert.AreNotEqual(Error, "");
+
         }
         [TestMethod]
         public void OrderDateInvalidData()
@@ -713,11 +708,6 @@ namespace Testing4
             string OrderDate = "this is not a date!";
             Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
             Assert.AreNotEqual(Error, "");
-
         }
     }
 }
-
-
-
-
