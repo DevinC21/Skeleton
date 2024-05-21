@@ -108,5 +108,94 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllUsers.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsUserCollection AllUsers = new clsUserCollection();
+
+            //create the item of test data
+            clsUser TestItem = new clsUser();
+
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+
+            //set its properties
+            TestItem.LoggedIn = true;
+            TestItem.UserID = 1;
+            TestItem.UserContactNumber = 777777777;
+            TestItem.CustomerID = 1;
+            TestItem.UserName = "Suiiiiiii";
+            TestItem.UserPrivileges = "Admin";
+            TestItem.UserDob = DateTime.Now;
+
+            //set ThisUser to the test data
+            AllUsers.ThisUser = TestItem;
+
+            //add the record
+            PrimaryKey = AllUsers.Add();
+
+            //set the primary key of the test data
+            TestItem.UserID = PrimaryKey;
+
+            //find the record
+            AllUsers.ThisUser.Find(PrimaryKey);
+
+            //test to see that the two values are the same
+            Assert.AreEqual(AllUsers.ThisUser, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsUserCollection AllUsers = new clsUserCollection();
+
+            //create the item of test data
+            clsUser TestItem = new clsUser();
+
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+
+            //set its properties
+            TestItem.LoggedIn = true;
+            TestItem.UserID = 1;
+            TestItem.UserContactNumber = 777777777;
+            TestItem.CustomerID = 1;
+            TestItem.UserName = "Suiiiiiii";
+            TestItem.UserPrivileges = "User";
+            TestItem.UserDob = DateTime.Now.AddYears(-12);
+
+            //set ThisUser to the test data
+            AllUsers.ThisUser = TestItem;
+
+            //add the record
+            PrimaryKey = AllUsers.Add();
+
+            //set the primary key of the test data
+            TestItem.UserID = PrimaryKey;
+
+            //modify the test record
+            TestItem.LoggedIn = false;
+            TestItem.UserID = 12;
+            TestItem.UserContactNumber = 75726725;
+            TestItem.CustomerID = 12;
+            TestItem.UserName = "Unsuiiiiiii";
+            TestItem.UserPrivileges = "User";
+            TestItem.UserDob = DateTime.Now.AddYears(-20);
+
+            //set the record based on the new test data
+            AllUsers.ThisUser = TestItem;
+
+            //update the record
+            AllUsers.Update();
+
+            //find the record
+            AllUsers.ThisUser.Find(PrimaryKey);
+
+            //test to see that the two values are the same
+            Assert.AreEqual(AllUsers.ThisUser, TestItem);
+        }
     }
 }

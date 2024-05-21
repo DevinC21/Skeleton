@@ -17,24 +17,24 @@ public partial class _1Viewer : System.Web.UI.Page
         AnUser = (clsUser)Session["AnUser"];
 
         //display the User ID for this entry
-        Response.Write(AnUser.UserID);
+        Response.Write("User ID: " + AnUser.UserID + "<br>");
 
         //display the User Contact Number for this entry
-        Response.Write(AnUser.UserContactNumber);
+        Response.Write("User Contact Number: " + AnUser.UserContactNumber + "<br>");
 
         //display the User Privileges for this entry
-        Response.Write(AnUser.UserPrivileges);
+        Response.Write("User Privileges: " + AnUser.UserPrivileges + "<br>");
 
         //display the User DOB for this entry
-        Response.Write(AnUser.UserDob);
+        Response.Write("User Date Of Birth: " + AnUser.UserDob + "<br>");
 
         //display the Logged In for this entry
-        Response.Write(AnUser.LoggedIn);
+        Response.Write("Logged In: " + AnUser.LoggedIn + "<br>");
 
         //display the Customer ID for this entry
-        Response.Write(AnUser.CustomerID);
+        Response.Write("Customer ID: " + AnUser.CustomerID + "<br>");
 
         //display the Username for this entry
-        Response.Write(AnUser.UserName);
+        Response.Write("Username: " + AnUser.UserName + "<br>");
     }
 }

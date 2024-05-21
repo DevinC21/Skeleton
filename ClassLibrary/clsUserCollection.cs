@@ -8,6 +8,9 @@ namespace ClassLibrary
         //private data member for the list
         List<clsUser> mUserList = new List<clsUser>();
 
+        //private data member for ThisUser
+        clsUser mThisUser = new clsUser();
+
         //public property for the user list
         public List<clsUser> UserList
         {
@@ -36,7 +39,19 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public clsUser ThisUser { get; set; }
+        public clsUser ThisUser
+        {
+            get
+            {
+                //return the private data
+                return mThisUser;
+            }
+            set
+            {
+                //set the private data
+                mThisUser = value;
+            }
+        }
 
         //constructor for the class
         public clsUserCollection()
@@ -77,6 +92,41 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters for the stored procedure
+            DB.AddParameter("@UserContactNumber", mThisUser.UserContactNumber);
+            DB.AddParameter("@CustomerID", mThisUser.CustomerID);
+            DB.AddParameter("@UserName", mThisUser.UserName);
+            DB.AddParameter("@UserPrivileges", mThisUser.UserPrivileges);
+            DB.AddParameter("@UserDob", mThisUser.UserDob);
+            DB.AddParameter("@LoggedIn", mThisUser.LoggedIn);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblUser_Insert");
+        }
+
+        public void Update()
+        {
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters for the stored procedure
+            DB.AddParameter("@UserID", mThisUser.UserID);
+            DB.AddParameter("@UserContactNumber", mThisUser.UserContactNumber);
+            DB.AddParameter("@CustomerID", mThisUser.CustomerID);
+            DB.AddParameter("@UserName", mThisUser.UserName);
+            DB.AddParameter("@UserPrivileges", mThisUser.UserPrivileges);
+            DB.AddParameter("@UserDob", mThisUser.UserDob);
+            DB.AddParameter("@LoggedIn", mThisUser.LoggedIn);
+
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblUser_Update");
         }
     }
 }

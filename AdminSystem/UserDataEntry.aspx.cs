@@ -8,8 +8,41 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with the page level scope
+    Int32 UserID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the user to be processed
+        UserID = Convert.ToInt32(Session["UserID"]);
+    
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (UserID != -1)
+            {
+                //display the current data for the record
+                DisplayUser();
+            }
+        }
+    }
+
+    void DisplayUser()
+    {
+        //create an instance of the user
+        clsUserCollection User = new clsUserCollection();
+
+        //find the record to update
+        User.ThisUser.Find(UserID);
+
+        //display the data for the record
+        txtUserID.Text = User.ThisUser.UserID.ToString();
+        txtUserContactNumber.Text = User.ThisUser.UserContactNumber.ToString();
+        txtCustomerID.Text = User.ThisUser.CustomerID.ToString();
+        txtUserName.Text = User.ThisUser.UserName.ToString();
+        txtUserPrivileges.Text = User.ThisUser.UserPrivileges.ToString();
+        txtUserDob.Text = User.ThisUser.UserDob.ToString();
+        chkLoggedIn.Checked = User.ThisUser.LoggedIn;
+
 
     }
 
@@ -22,9 +55,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsUser
         clsUser AnUser = new clsUser();
-
-        //capture the UserID
-        string UserID = txtUserID.Text;
 
         //capture the UserContactNumber
         string UserContactNumber = txtUserContactNumber.Text;
@@ -51,17 +81,57 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
         if (Error == "")
         {
+            //capture the UserID
+            AnUser.UserID = UserID;
+
             //capture the UserPrivileges
-            AnUser.UserPrivileges = txtUserPrivileges.Text;
+            AnUser.UserPrivileges = UserPrivileges;
 
             //capture the UserDob
-            AnUser.UserDob = Convert.ToDateTime(txtUserDob.Text);
+            AnUser.UserDob = Convert.ToDateTime(UserDob);
 
             //capture the Username
-            AnUser.UserName = txtUserName.Text;
+            AnUser.UserName = UserName;
 
-            //store the address in the session object
+            //capture the UserContactNumber
+            AnUser.UserContactNumber = Convert.ToInt32(UserContactNumber);
+
+            //capture the CustomerID
+            AnUser.CustomerID = Convert.ToInt32(CustomerID);
+
+            //capture the LoggedIn
+            AnUser.LoggedIn = chkLoggedIn.Checked;
+
+            //create a new instance of the user collection
+            clsUserCollection UserList = new clsUserCollection();
+
+            //set the ThisUser property
+            UserList.ThisUser = AnUser;
+
+            //store the user in the session object
             Session["AnUser"] = AnUser;
+
+            //if this is a new record i.e. UserID = -1 then add the data
+            if (UserID == -1)
+            {
+                //set the ThisUser property
+                UserList.ThisUser = AnUser;
+
+                //add the new record
+                UserList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                UserList.ThisUser.Find(UserID);
+
+                //set the ThisUser property
+                UserList.ThisUser = AnUser;
+
+                //update the record
+                UserList.Update();
+            }
 
             //navigate to the view page
             Response.Redirect("UserViewer.aspx");
