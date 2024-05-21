@@ -12,7 +12,7 @@ namespace Testing1
         //good test data
         // create some test data to pass the method
         string CustomerUsername = "Username";
-        string CustomerPassword = "Password";
+        string CustomerPass = "Password";
         string CustomerEmail = "test@gmail.com";
         string DateOfBirth = DateTime.Now.ToShortDateString();
         string BankDetails = "100";
@@ -282,9 +282,19 @@ namespace Testing1
 
             String Error = "";
 
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
 
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerUsernameMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerUsername = "";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -293,7 +303,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerUsername = "a";
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
 
@@ -303,7 +313,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerUsername = "aa";
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
 
@@ -313,7 +323,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerUsername = "aaaaaaaaaaaaaaaaaaaa";
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
 
@@ -323,7 +333,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerUsername = "aaaaaaaaaaaaaaaaaaa";
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
 
@@ -333,7 +343,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerUsername = "aaaaaaaaaaaaaaaaaaaaa";
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -343,7 +353,7 @@ namespace Testing1
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerUsername = "aaaaaaaaaa";
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
 
@@ -354,7 +364,7 @@ namespace Testing1
             String Error = "";
             string CustomerUsername = "";
             CustomerUsername = CustomerUsername.PadRight(500, 'a');
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -365,9 +375,365 @@ namespace Testing1
             String Error = "";
             string CustomerUsername = "";
             CustomerUsername = CustomerUsername.PadLeft(500, 'a');
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPassword, CustomerEmail, DateOfBirth, BankDetails);
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void DateOfBirthExtremeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthInvalidData()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string DateOfBirth = "This is not a date!";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "a";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerpassMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "aa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "aaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMaxLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "aaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMaxPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "aaaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassMid()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "aaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(500, 'a');
+            Error = AnCustomer.Valid(CustomerPass, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerPassExtremeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadLeft(500, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "a";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "aa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(50, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMaxLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(49, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMaxPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(51, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailMid()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "aaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(500, 'a');
+            Error = AnCustomer.Valid(CustomerPass, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerEmailExtremeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadLeft(500, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "a";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "aa";
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            BankDetails = BankDetails.PadRight(50, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMaxLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            BankDetails = BankDetails.PadRight(49, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMaxPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            BankDetails = BankDetails.PadRight(51, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsMid()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            BankDetails = BankDetails.PadRight(25, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            BankDetails = BankDetails.PadRight(500, 'a');
+            Error = AnCustomer.Valid(CustomerPass, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BankDetailsExtremeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string BankDetails = "";
+            BankDetails = BankDetails.PadLeft(500, 'a');
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
