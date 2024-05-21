@@ -137,6 +137,7 @@ namespace ClassLibrary
         public string Valid(string username, string password, string email, string dateOfBirth, string bankDetails)
         {
             String Error = "";
+            DateTime DateTemp;
 
             if (username.Length == 0)
             {
@@ -146,6 +147,57 @@ namespace ClassLibrary
             if (username.Length > 20)
             {
                 Error = Error + "The Username must be less than 20 characters : ";
+            }
+
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The Date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            if (password.Length == 0)
+            {
+                Error = Error + "The password may not be blank : ";
+            }
+
+            if (password.Length > 16)
+            {
+                Error = Error + "The password must be less than 16 characters : ";
+            }
+
+            if (email.Length == 0)
+            {
+                Error = Error + "The Email may not be blank : ";
+            }
+
+            if (email.Length > 50)
+            {
+                Error = Error + "The Email must be less than 50 characters : ";
+            }
+
+            if (bankDetails.Length == 0)
+            {
+                Error = Error + "The Bank Details may not be blank : ";
+            }
+
+            if (bankDetails.Length > 50)
+            {
+                Error = Error + "The Bank Details must be less than 50 characters : ";
             }
             return Error;
         }
