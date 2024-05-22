@@ -19,31 +19,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
        clsCustomer AnCustomer = new clsCustomer();
 
         // capture the username
-        AnCustomer.CustomerUsername = txtUsername.Text;
+        String CustomerUsername = txtUsername.Text;
 
         // capture the password
-        AnCustomer.CustomerPass = txtPassword.Text;
+        String CustomerPass = txtPassword.Text;
 
         // capture the email
-        AnCustomer.CustomerEmail = txtEmail.Text;
+        String CustomerEmail = txtEmail.Text;
 
         // capture the Bank Details
-        AnCustomer.BankDetails = Convert.ToInt32(txtBankDetails.Text);
+        String BankDetails = txtBankDetails.Text;
 
         // capture the Confirmed
-        AnCustomer.CustomerConfirmed = chkConfirmed.Checked;
+        String CustomerConfirmed = chkConfirmed.Text;
 
         //capture the UserDob
-        AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+        String DateOfBirth = txtDateOfBirth.Text;
 
         //capture the CustomerID
-        AnCustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
+        String CustomerId = txtCustomerId.Text;
 
-        // store the data in the session object
-        Session["AnCustomer"] = AnCustomer;
+        String Error = "";
+        Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+        if (Error == "")
+        {
+            AnCustomer.CustomerUsername = CustomerUsername;
+            AnCustomer.CustomerPass = CustomerPass;
+            AnCustomer.CustomerEmail = CustomerEmail;
+            AnCustomer.BankDetails = Convert.ToInt32(BankDetails);
+            AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            Session["AnCustomer"] = AnCustomer;
 
-        // navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
+            // navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
