@@ -7,7 +7,6 @@ namespace ClassLibrary
     {
 
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
-
         public List<clsCustomer> CustomerList
         {
             get
@@ -60,30 +59,6 @@ namespace ClassLibrary
                 mCustomerList.Add(AnCustomer);
                 Index++;
             }
-            
-            
-            /*
-            clsCustomer TestItem = new clsCustomer();
-
-            TestItem.CustomerConfirmed = true;
-            TestItem.CustomerId = 1;
-            TestItem.BankDetails = 1;
-            TestItem.DateOfBirth = DateTime.Now;
-            TestItem.CustomerUsername = "Name";
-            TestItem.CustomerPass = "Password";
-            TestItem.CustomerEmail = "word@gmail.com";
-            mCustomerList.Add(TestItem);
-
-            TestItem = new clsCustomer();
-            TestItem.CustomerConfirmed = true;
-            TestItem.CustomerId = 2;
-            TestItem.BankDetails = 2;
-            TestItem.DateOfBirth = DateTime.Now;
-            TestItem.CustomerUsername = "Another Name";
-            TestItem.CustomerPass = "Another Password";
-            TestItem.CustomerEmail = "email@gmail.com";
-            mCustomerList.Add(TestItem);
-          */
         }
 
     }

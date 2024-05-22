@@ -14,7 +14,7 @@ namespace Testing1
         string CustomerUsername = "Username";
         string CustomerPass = "Password";
         string CustomerEmail = "test@gmail.com";
-        string DateOfBirth = DateTime.Now.ToShortDateString();
+        string DateOfBirth = "11/11/1990";
         string BankDetails = "100";
 
 
@@ -386,7 +386,7 @@ namespace Testing1
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-100);
+            TestDate = TestDate.AddYears(-1000);
             string DateOfBirth = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
             Assert.AreNotEqual(Error, "");
@@ -399,6 +399,7 @@ namespace Testing1
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-100);
             string DateOfBirth = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
             Assert.AreNotEqual(Error, "");
@@ -437,7 +438,7 @@ namespace Testing1
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(100);
+            TestDate = TestDate.AddYears(-12);
             string DateOfBirth = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
             Assert.AreNotEqual(Error, "");
@@ -446,10 +447,19 @@ namespace Testing1
         [TestMethod]
         public void DateOfBirthInvalidData()
         {
+            //create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
+
+            //string variable to store any error message
             String Error = "";
-            string DateOfBirth = "This is not a date!";
+
+            //set the DateOfBirth to a non date value
+            string DateOfBirth = "this is not a date!";
+
+            //invoke the method
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
+
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
