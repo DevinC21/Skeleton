@@ -155,20 +155,21 @@ namespace ClassLibrary
             {
                 DateTemp = Convert.ToDateTime(dateOfBirth);
 
-                if (DateTemp < DateComp)
+                if (DateTemp < DateComp.AddYears(-100))
                 {
-                    Error = Error + "The Date cannot be in the past : ";
+                    Error = Error + "The Date cannot be more 100 years ago : ";
                 }
 
-                if (DateTemp > DateComp)
+                if (DateTemp > DateComp.AddYears(-12))
                 {
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The date cannot less than 12 years ago : ";
                 }
             }
             catch
             {
                 Error = Error + "The date was not a valid date : ";
             }
+
 
             if (password.Length == 0)
             {
