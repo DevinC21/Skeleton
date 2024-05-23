@@ -106,5 +106,24 @@ namespace Testing4
             //test to see that the two values are the same
             Assert.AreEqual(AllOrderss.Count, TestList.Count);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsOrdersCollection AllOrderss = new clsOrdersCollection();
+            clsOrders TestItem = new clsOrders();
+            Int32 PrimaryKey = 0;
+            TestItem.Payment = true;
+            TestItem.OrderID = 1;
+            TestItem.OrderFullName = "Mazda Zob";
+            TestItem.OrderDescription = "good";
+            TestItem.OrderReturn = "No";
+            TestItem.OrderStatus = "Accepted";
+            TestItem.OrderDate = DateTime.Now;
+            AllOrderss.ThisOrders = TestItem;
+            PrimaryKey = AllOrderss.Add();
+            TestItem.OrderID = PrimaryKey;
+            AllOrderss.ThisOrders.Find(PrimaryKey);
+            Assert.AreEqual(AllOrderss.ThisOrders, TestItem);
+        }
     }
 }

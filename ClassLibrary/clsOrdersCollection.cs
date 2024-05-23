@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -39,7 +41,17 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public clsOrders ThisOrders { get; set; }
+        public clsOrders ThisOrders
+        {
+            get
+            {
+                return mThisOrders;
+            }
+            set
+            {
+                mThisOrders = value;
+            }
+        }
 
         public clsOrdersCollection()
         {
@@ -64,7 +76,29 @@ namespace ClassLibrary
 
             }
         }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@OrderFullName", mThisOrders.OrderFullName);
+            DB.AddParameter("@OrderDescription", mThisOrders.OrderDescription);
+            DB.AddParameter("@OrderDate", mThisOrders.OrderDate);
+            DB.AddParameter("@Payment", mThisOrders.Payment);
+            DB.AddParameter("@OrderReturn", mThisOrders.OrderReturn);
+            DB.AddParameter("@OrderStatus", mThisOrders.OrderStatus);
+
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
     }
 }
+
+
+
+
+
+
+
+
 
 
