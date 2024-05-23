@@ -49,14 +49,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
+            AnOrders.Payment = chkPayment.Checked;
+
             AnOrders.OrderReturn = txtOrderReturn.Text;
 
             AnOrders.OrderStatus = txtOrderStatus.Text;
 
-            //store the orders in the session object
-            Session["AnOrders"] = AnOrders;
+            clsOrdersCollection OrderList = new clsOrdersCollection();
+            OrderList.ThisOrders = AnOrders;
+            OrderList.Add();
             //navigate to the view page
-            Response.Redirect("OrdersViewer.aspx");
+            Response.Redirect("OrdersList.aspx");
         }
         else
         {
