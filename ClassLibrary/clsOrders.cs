@@ -213,5 +213,10 @@ namespace ClassLibrary
             //return any error messages
             return Error;
         }
+
+        public void Find(clsOrders anOrders)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,9 +8,17 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderID != -1)
+            {
+                DisplayOrders();
+            }
+        }
     }
 
     protected void btnOK_Click1(object sender, EventArgs e)
@@ -20,8 +28,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order fullname
         string OrderFullName = txtOrderFullName.Text;
 
-        //capture the orderId
-        string OrderID = txtOrderID.Text;
 
         //capture the order description
         string OrderDescription = txtOrderDescription.Text;
@@ -43,30 +49,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrders.Valid(OrderFullName, OrderDescription, OrderReturn, OrderStatus, OrderDate);
         if (Error == "")
         {
-            AnOrders.OrderFullName = txtOrderFullName.Text;
+            AnOrders.OrderID = OrderID;
 
-            AnOrders.OrderDescription = txtOrderDescription.Text;
+            AnOrders.OrderFullName = OrderFullName;
+
+            AnOrders.OrderDescription = OrderDescription;
 
             AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
             AnOrders.Payment = chkPayment.Checked;
 
-            AnOrders.OrderReturn = txtOrderReturn.Text;
+            AnOrders.OrderReturn = OrderReturn;
 
-            AnOrders.OrderStatus = txtOrderStatus.Text;
+            AnOrders.OrderStatus = OrderStatus;
 
-            clsOrdersCollection OrderList = new clsOrdersCollection();
-            OrderList.ThisOrders = AnOrders;
-            OrderList.Add();
-            //navigate to the view page
-            Response.Redirect("OrdersList.aspx");
+            clsOrdersCollection OrdersList = new clsOrdersCollection();
+
+            OrdersList.ThisOrders = AnOrders;
+
+            Session["AnOrders"] = AnOrders;
+
+            if (OrderID == -1)
+            {
+                OrdersList.ThisOrders = AnOrders;
+                OrdersList.Add();
+            }
+            else
+            {
+                OrdersList.ThisOrders.Find(AnOrders);
+                OrdersList.ThisOrders = AnOrders;
+                OrdersList.Update();
+
+            }
+            Response.Redirect("OrdersViewer.aspx");
         }
         else
         {
             lblError.Text = Error;
-
         }
     }
+
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -90,6 +112,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void chkPayment_CheckedChanged(object sender, EventArgs e)
     {
+
+    }
+    void DisplayOrders()
+    {
+        clsOrdersCollection Orders = new clsOrdersCollection();
+        Orders.ThisOrders.Find(OrderID);
+
+        txtOrderID.Text = Orders.ThisOrders.OrderID.ToString();
+        txtOrderFullName.Text = Orders.ThisOrders.OrderFullName.ToString();
+        txtOrderDescription.Text = Orders.ThisOrders.OrderDescription.ToString();
+        txtOrderDate.Text = Orders.ThisOrders.OrderDate.ToString();
+        chkPayment.Checked = Orders.ThisOrders.Payment;
+        txtOrderReturn.Text = Orders.ThisOrders.OrderReturn.ToString();
+        txtOrderStatus.Text = Orders.ThisOrders.OrderStatus.ToString();
+
 
     }
 }

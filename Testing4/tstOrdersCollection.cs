@@ -171,5 +171,36 @@ namespace Testing4
 
             Assert.AreEqual(AllOrderss.ThisOrders, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrdersCollection AllOrderss = new clsOrdersCollection();
+
+            clsOrders TestItem = new clsOrders();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Payment = true;
+            TestItem.OrderID = 1;
+            TestItem.OrderFullName = "Mazda Zob";
+            TestItem.OrderDescription = "good";
+            TestItem.OrderReturn = "No";
+            TestItem.OrderStatus = "Accepted";
+            TestItem.OrderDate = DateTime.Now;
+
+            AllOrderss.ThisOrders = TestItem;
+
+            PrimaryKey = AllOrderss.Add();
+
+            TestItem.OrderID = PrimaryKey;
+
+            AllOrderss.ThisOrders.Find(PrimaryKey);
+
+            AllOrderss.Delete();
+
+            Boolean Found = AllOrderss.ThisOrders.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+        }
     }
 }
