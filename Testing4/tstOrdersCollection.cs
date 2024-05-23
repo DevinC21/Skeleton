@@ -48,7 +48,7 @@ namespace Testing4
 
             //test to see that the two values are the same
             Assert.AreEqual(AllOrderss.OrdersList, TestList);
-       
+
         }
         [TestMethod]
         public void ThisOrdersPropertyOK()
@@ -110,8 +110,11 @@ namespace Testing4
         public void AddMethodOK()
         {
             clsOrdersCollection AllOrderss = new clsOrdersCollection();
+
             clsOrders TestItem = new clsOrders();
+
             Int32 PrimaryKey = 0;
+
             TestItem.Payment = true;
             TestItem.OrderID = 1;
             TestItem.OrderFullName = "Mazda Zob";
@@ -119,10 +122,53 @@ namespace Testing4
             TestItem.OrderReturn = "No";
             TestItem.OrderStatus = "Accepted";
             TestItem.OrderDate = DateTime.Now;
+
             AllOrderss.ThisOrders = TestItem;
+
             PrimaryKey = AllOrderss.Add();
+
             TestItem.OrderID = PrimaryKey;
+
             AllOrderss.ThisOrders.Find(PrimaryKey);
+
+            Assert.AreEqual(AllOrderss.ThisOrders, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrdersCollection AllOrderss = new clsOrdersCollection();
+
+            clsOrders TestItem = new clsOrders();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Payment = true;
+            TestItem.OrderID = 1;
+            TestItem.OrderFullName = "Mazda Zob";
+            TestItem.OrderDescription = "good";
+            TestItem.OrderReturn = "No";
+            TestItem.OrderStatus = "Accepted";
+            TestItem.OrderDate = DateTime.Now;
+
+            AllOrderss.ThisOrders = TestItem;
+
+            PrimaryKey = AllOrderss.Add();
+
+            TestItem.OrderID = PrimaryKey;
+
+            TestItem.Payment = true;
+            TestItem.OrderID = 3;
+            TestItem.OrderFullName = "Justin Don";
+            TestItem.OrderDescription = "good";
+            TestItem.OrderReturn = "No";
+            TestItem.OrderStatus = "Accepted";
+            TestItem.OrderDate = DateTime.Now;
+
+            AllOrderss.ThisOrders = TestItem;
+
+            AllOrderss.Update();
+
+            AllOrderss.ThisOrders.Find(PrimaryKey);
+
             Assert.AreEqual(AllOrderss.ThisOrders, TestItem);
         }
     }
