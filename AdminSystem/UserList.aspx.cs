@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
@@ -67,5 +68,74 @@ public partial class _1_List : System.Web.UI.Page
             //if no record has been selected
             lblError.Text = "Please select a record from the list to edit";
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 UserID;
+
+        //if a record has been selected from the list
+        if (lstUserList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to delete
+            UserID = Convert.ToInt32(lstUserList.SelectedValue);
+
+            //store the data in the session object
+            Session["UserID"] = UserID;
+
+            //redirect to the edit page
+            Response.Redirect("UserConfirmDelete.aspx");
+        }
+        else
+        {
+            //if no record has been selected
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the user object
+        clsUserCollection AnUser = new clsUserCollection();
+
+        //retrieve the value of username from tthe presentation layer
+        AnUser.ReportByUserName(txtFilter.Text);
+
+        //set the data source to the list of users in the collection
+        lstUserList.DataSource = AnUser.UserList;
+
+        //set the name of the primary key
+        lstUserList.DataValueField = "UserID";
+
+        //set the name of the field to display
+        lstUserList.DataTextField = "UserName";
+
+        //bind the data to the list
+        lstUserList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the user object
+        clsUserCollection AnUser = new clsUserCollection();
+
+        //clear any existing filter to tidy up the interface
+        AnUser.ReportByUserName("");
+
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+
+        //set the data source to the list of users in the collection
+        lstUserList.DataSource = AnUser.UserList;
+
+        //set the name of the primary key
+        lstUserList.DataValueField = "UserID";
+
+        //set the name of the field to display
+        lstUserList.DataTextField = "UserName";
+
+        //bind the data to the list
+        lstUserList.DataBind() ;
     }
 }

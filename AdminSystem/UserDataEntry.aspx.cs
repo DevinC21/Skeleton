@@ -14,7 +14,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //get the number of the user to be processed
         UserID = Convert.ToInt32(Session["UserID"]);
-    
+
         if (IsPostBack == false)
         {
             //if this is not a new record
@@ -105,12 +105,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new instance of the user collection
             clsUserCollection UserList = new clsUserCollection();
 
-            //set the ThisUser property
-            UserList.ThisUser = AnUser;
-
-            //store the user in the session object
-            Session["AnUser"] = AnUser;
-
             //if this is a new record i.e. UserID = -1 then add the data
             if (UserID == -1)
             {
@@ -134,7 +128,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
 
             //navigate to the view page
-            Response.Redirect("UserViewer.aspx");
+            Response.Redirect("UserList.aspx");
         }
         else
         {
@@ -172,5 +166,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtUserDob.Text = AnUser.UserDob.ToString();
             chkLoggedIn.Checked = AnUser.LoggedIn;
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("UserList.aspx");
     }
 }
