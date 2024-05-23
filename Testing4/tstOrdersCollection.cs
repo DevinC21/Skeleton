@@ -202,5 +202,39 @@ namespace Testing4
 
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByOrderFullNameMethodOK()
+        {
+            clsOrdersCollection AllOrderss = new clsOrdersCollection();
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            FilteredOrders.ReportByOrderFullName("");
+            Assert.AreEqual(AllOrderss.Count, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByOrderFullNameNoneFound()
+        {
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            FilteredOrders.ReportByOrderFullName("xxxxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByOrderFullNameTestDataFound()
+        {
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByOrderFullName("yyyyy");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrdersList[0].OrderID != 25)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrdersList[1].OrderID != 26)
+                {
+                    OK = false;
+                }
+                Assert.IsTrue(OK);
+            }
+        }
     }
 }
