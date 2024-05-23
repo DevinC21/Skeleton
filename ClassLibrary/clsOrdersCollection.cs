@@ -55,27 +55,11 @@ namespace ClassLibrary
 
         public clsOrdersCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsOrders AnOrders = new clsOrders();
-                AnOrders.Payment = Convert.ToBoolean(DB.DataTable.Rows[Index]["Payment"]);
-                AnOrders.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                AnOrders.OrderFullName = Convert.ToString(DB.DataTable.Rows[Index]["OrderFullName"]);
-                AnOrders.OrderDescription = Convert.ToString(DB.DataTable.Rows[Index]["OrderDescription"]);
-                AnOrders.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
-                AnOrders.OrderReturn = Convert.ToString(DB.DataTable.Rows[Index]["OrderReturn"]);
-                AnOrders.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
-
-                mOrdersList.Add(AnOrders);
-                Index++;
-
-            }
+            PopulateArray(DB);
         }
+     
 
         public int Add()
         {
@@ -111,6 +95,39 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderID", mThisOrders.OrderID);
             DB.Execute("sproc_tblOrder_Delete");
+        }
+
+        public void ReportByOrderFullName(string OrderFullName)
+        {
+            //filters the records based on a full or partial post code
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderFullName", OrderFullName);
+            DB.Execute("sproc_tblOrder_FilterbyOrderFullName");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrdersList = new List<clsOrders>();
+            while (Index < RecordCount)
+            {
+                clsOrders AnOrders = new clsOrders();
+                AnOrders.Payment = Convert.ToBoolean(DB.DataTable.Rows[Index]["Payment"]);
+                AnOrders.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrders.OrderFullName = Convert.ToString(DB.DataTable.Rows[Index]["OrderFullName"]);
+                AnOrders.OrderDescription = Convert.ToString(DB.DataTable.Rows[Index]["OrderDescription"]);
+                AnOrders.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrders.OrderReturn = Convert.ToString(DB.DataTable.Rows[Index]["OrderReturn"]);
+                AnOrders.OrderStatus = Convert.ToString(DB.DataTable.Rows[Index]["OrderStatus"]);
+
+                mOrdersList.Add(AnOrders);
+                Index++;
+
+            }
+
         }
     }
 }
