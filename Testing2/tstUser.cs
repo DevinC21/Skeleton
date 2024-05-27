@@ -369,6 +369,26 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void UserNameExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserName = "";
+            UserName = UserName.PadRight(1, 'a'); //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
         public void UserNameMinLessOne()
         {
             //create an instance of the class we want to create
@@ -378,7 +398,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            String UserName = "aaaa"; //this should trigger an error
+            string UserName = "";
+            UserName = UserName.PadRight(4, 'a'); //this should trigger an error
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -397,7 +418,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserName = "aaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(5, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -416,7 +438,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserName = "aaaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(6, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -435,7 +458,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserName = "aaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(19, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -454,7 +478,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserName = "aaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(20, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -473,7 +498,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserName = "aaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(21, 'a'); //this should fail
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -512,13 +538,34 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserName = "aaaaaaaaaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(12, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserPrivilegesExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(1, 'a'); //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -531,7 +578,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            String UserPrivileges = "aaa"; //this should trigger an error
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(3, 'a'); //this should trigger an error
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -550,7 +598,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserPrivileges = "aaaa"; //this should be ok
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(4, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -569,7 +618,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserPrivileges = "aaaaa"; //this should be ok
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(5, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -588,7 +638,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserPrivileges = "aaaa"; //this should be ok
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(4, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -607,7 +658,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserPrivileges = "aaaaa"; //this should be ok
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(5, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -626,7 +678,8 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserPrivileges = "aaaaaa"; //this should be ok
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(6, 'a'); //this should be ok
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -645,7 +698,64 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string UserPrivileges = "aaaaaaaaaa"; //this should fail
+            string UserPrivileges = "";
+            UserPrivileges = UserPrivileges.PadRight(10, 'a'); //this should fail
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 500 years ago
+            TestDate = DateTime.Now.Date.AddYears(-500);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 100 years and 1 day ago
+            TestDate = DateTime.Now.Date.AddYears(-100).AddDays(-1);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
 
             //invoke the method
             Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
@@ -671,6 +781,62 @@ namespace Testing2
 
             //change the date to whatever the date is 100 years ago
             TestDate = DateTime.Now.Date.AddYears(-100);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 99 years and 364 days ago
+            TestDate = DateTime.Now.Date.AddYears(-100).AddDays(1);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 12 years and 1 day ago
+            TestDate = DateTime.Now.Date.AddYears(-12).AddDays(-1);
 
             //convert the date variable to a string variable
             string UserDob = TestDate.ToString();
@@ -709,6 +875,64 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void UserDobMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 11 years and 364 days ago
+            TestDate = DateTime.Now.Date.AddYears(-12).AddDays(1);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserDobExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create a variable to store the test date data
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is 100 years ahead
+            TestDate = DateTime.Now.Date.AddYears(100);
+
+            //convert the date variable to a string variable
+            string UserDob = TestDate.ToString();
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
 
         [TestMethod]
         public void UserDobInvalidData()
