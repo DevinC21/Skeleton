@@ -134,7 +134,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string username, string password, string email, string dateOfBirth, string bankDetails)
+        public string Valid(string username, string password, string email, string bankDetails, string dateOfBirth)
         {
             String Error = "";
             DateTime DateTemp;
@@ -150,26 +150,6 @@ namespace ClassLibrary
             }
 
             DateTime DateComp = DateTime.Now.Date;
-
-            try
-            {
-                DateTemp = Convert.ToDateTime(dateOfBirth);
-
-                if (DateTemp < DateComp.AddYears(-100))
-                {
-                    Error = Error + "The Date cannot be more 100 years ago : ";
-                }
-
-                if (DateTemp > DateComp.AddYears(-12))
-                {
-                    Error = Error + "The date cannot less than 12 years ago : ";
-                }
-            }
-            catch
-            {
-                Error = Error + "The date was not a valid date : ";
-            }
-
 
             if (password.Length == 0)
             {
@@ -200,7 +180,28 @@ namespace ClassLibrary
             {
                 Error = Error + "The Bank Details must be less than 50 characters : ";
             }
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+
+                if (DateTemp < DateComp.AddYears(-100))
+                {
+                    Error = Error + "The Date cannot be more 100 years ago : ";
+                }
+
+                if (DateTemp > DateComp.AddYears(-12))
+                {
+                    Error = Error + "The date cannot less than 12 years ago : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
             return Error;
+
+
         }
 
     }

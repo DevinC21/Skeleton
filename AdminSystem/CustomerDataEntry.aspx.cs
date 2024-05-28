@@ -39,7 +39,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the CustomerID
         String CustomerId = txtCustomerId.Text;
 
+        // Variable to store error messages
         String Error = "";
+        //Validates the data
         Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
         if (Error == "")
         {
@@ -48,13 +50,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.CustomerEmail = CustomerEmail;
             AnCustomer.BankDetails = Convert.ToInt32(BankDetails);
             AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
-            Session["AnCustomer"] = AnCustomer;
+
+            //Creates new instance of Customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //Set the ThisCustomer property
+            CustomerList.ThisCustomer = AnCustomer;
+            // add new record
+            CustomerList.Add();
 
             // navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
+            // display error message
             lblError.Text = Error;
         }
     }

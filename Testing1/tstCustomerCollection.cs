@@ -44,19 +44,19 @@ namespace Testing1
         {
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
 
-            List<clsCustomer> TestCustomer = new List<clsCustomer>();
+            //List<clsCustomer> TestCustomer = new List<clsCustomer>();
 
-            clsCustomer TestItem = new clsCustomer();
+            clsCustomer TestCustomer = new clsCustomer();
 
-            TestItem.CustomerConfirmed = true;
-            TestItem.CustomerId = 1;
-            TestItem.BankDetails = 1;
-            TestItem.DateOfBirth = DateTime.Now;
-            TestItem.CustomerUsername = "Name";
-            TestItem.CustomerPass = "Password";
-            TestItem.CustomerEmail = "word@gmail.com";
+            TestCustomer.CustomerConfirmed = true;
+            TestCustomer.CustomerId = 1;
+            TestCustomer.BankDetails = 1;
+            TestCustomer.DateOfBirth = DateTime.Now;
+            TestCustomer.CustomerUsername = "Name";
+            TestCustomer.CustomerPass = "Password";
+            TestCustomer.CustomerEmail = "word@gmail.com";
 
-            TestCustomer.Add(TestItem);
+            //TestCustomer.Add(TestCustomer);
 
             AllCustomer.ThisCustomer = TestCustomer;
 
@@ -87,7 +87,7 @@ namespace Testing1
             Assert.AreEqual(AllCustomer.Count, TestList.Count);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void AddMethodOK()
         {
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
@@ -105,9 +105,13 @@ namespace Testing1
             AllCustomer.ThisCustomer = TestItem;
 
             PrimaryKey = AllCustomer.Add();
+
             TestItem.CustomerId = PrimaryKey;
+
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+
             Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
         }
-        */
+        
     }
 }
