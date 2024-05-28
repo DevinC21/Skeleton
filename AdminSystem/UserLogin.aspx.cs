@@ -34,6 +34,9 @@ public partial class UserLogin : System.Web.UI.Page
         //find the record
         Found = AnLogin.FindUser(LoginName, LoginPassword);
 
+        //add a session to capture the login name
+        Session["AnLogin"] = AnLogin;
+
         //if login name and/or password is empty
         if(txtLoginName.Text == "")
         {
@@ -56,5 +59,11 @@ public partial class UserLogin : System.Web.UI.Page
             //record the error
             lblError.Text = "Login details are incorrect. Please try again ";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
