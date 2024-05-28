@@ -8,12 +8,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        
         <asp:ListBox ID="lstCustomerList" runat="server" Height="228px" Width="269px"></asp:ListBox>
-        <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-        </p>
+        
+        <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 10px; top: 250px; position: absolute;" width="60px" Text="Add" />
+        <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 80px; top: 250px; position: absolute;" width="60px" Text="Edit" OnClick="btnEdit_Click" />
+        
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 300px; position: absolute;"></asp:Label>
     </form>
 </body>
 </html>

@@ -79,6 +79,7 @@ namespace ClassLibrary
 
         public int Add()
         {
+            //Connect to the database
            clsDataConnection DB = new clsDataConnection();
 
             DB.AddParameter("@CustomerUsername", mThisCustomer.CustomerUsername);
@@ -89,6 +90,23 @@ namespace ClassLibrary
             DB.AddParameter("@BankDetails", mThisCustomer.BankDetails);
 
             return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public void Update()
+        {
+            //Update an existing record based on the values of ThisCustomer
+            //Connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            // Set the parameters for the new stored procedure
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+            DB.AddParameter("@CustomerUsername", mThisCustomer.CustomerUsername);
+            DB.AddParameter("@CustomerPass", mThisCustomer.CustomerPass);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@CustomerConfirmed", mThisCustomer.CustomerConfirmed);
+            DB.AddParameter("@BankDetails", mThisCustomer.BankDetails);
+            // Execute stored procedure
+            DB.Execute("sproc_tblCustomer_Update");
         }
     }
 

@@ -12,11 +12,11 @@ public partial class _1_List : System.Web.UI.Page
     {
         if (IsPostBack == false)
         {
-            DisplayCustomer();
+            DisplayCustomers();
         }
     }
 
-    void DisplayCustomer()
+    void DisplayCustomers()
     {
         clsCustomerCollection Customer = new clsCustomerCollection();
         lstCustomerList.DataSource = Customer.CustomerList;
@@ -31,5 +31,25 @@ public partial class _1_List : System.Web.UI.Page
         Session["CustomerId"] = -1;
         // Redirect to the Data Entry page
         Response.Redirect("CustomerDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        Int32 CustomerId;
+        // If a record has been selected from the list
+        if(lstCustomerList.SelectedIndex != -1)
+        {
+            // Get the primary Key value of the record to edit
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            // store the data in the session object
+            Session["CustomerId"] = CustomerId;
+            // redirect to the edit page
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else    // if not record has been selected
+        {
+            lblError.Text = "Please Select a record from the list to edit";
+        }
     }
 }
