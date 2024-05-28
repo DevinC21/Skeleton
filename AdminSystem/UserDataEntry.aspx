@@ -8,8 +8,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
         <asp:Label ID="lblUserID" runat="server" style="z-index: 1; left: 10px; top: 30px; position: absolute" Text="User ID"></asp:Label>
         <asp:TextBox ID="txtUserID" runat="server" style="z-index: 1; left: 125px; top: 30px; position: absolute" width="125px" height="20px"></asp:TextBox>
 
@@ -34,6 +32,7 @@
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 10px; top: 300px; position: absolute" width="50px" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 65px; top: 300px; position: absolute" width="75px" Text="Cancel" OnClick="btnCancel_Click" />
         <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 300px; top: 30px; position: absolute" width="60px" Text="Find" OnClick="btnFind_Click" />
+        <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; left: 200px; top: 300px; position: absolute" width="160px" Text="Return to Main Menu" OnClick="btnMainMenu_Click" />
     </form>
 </body>
 </html>

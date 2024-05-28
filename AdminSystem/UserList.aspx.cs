@@ -17,6 +17,15 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayUsers();
         }
+
+        //create a new instance of clsUserLogin
+        clsUserLogin AnLogin = new clsUserLogin();
+
+        //get data from the session object
+        AnLogin = (clsUserLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayUsers()
@@ -137,5 +146,11 @@ public partial class _1_List : System.Web.UI.Page
 
         //bind the data to the list
         lstUserList.DataBind() ;
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
