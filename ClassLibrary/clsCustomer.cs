@@ -134,7 +134,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string username, string password, string email, string bankDetails, string dateOfBirth)
+        public string Valid(string username, string password, string email, string dateOfBirth, string bankDetails)
         {
             String Error = "";
             DateTime DateTemp;
@@ -148,8 +148,6 @@ namespace ClassLibrary
             {
                 Error = Error + "The Username must be less than 20 characters : ";
             }
-
-            DateTime DateComp = DateTime.Now.Date;
 
             if (password.Length == 0)
             {
@@ -180,6 +178,8 @@ namespace ClassLibrary
             {
                 Error = Error + "The Bank Details must be less than 50 characters : ";
             }
+
+            DateTime DateComp = DateTime.Now.Date;
             try
             {
                 DateTemp = Convert.ToDateTime(dateOfBirth);
