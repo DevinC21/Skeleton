@@ -147,7 +147,7 @@ namespace Testing3
             //create a Boolean variable to store the results of thhe validation
             Boolean Found = false;
             //create some test data to use with the method 
-            Int32 StockID = 9;
+            Int32 StockID = 8;
             //invoke the method
             Found = AnStock.Find(StockID);
             //test to see if the result is true
@@ -167,13 +167,13 @@ namespace Testing3
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StockID = 9;
+            Int32 StockID = 8;
 
             //invoke the method
             Found = AnStock.Find(StockID);
 
             //check the Stock ID
-            if (AnStock.StockID != 9)
+            if (AnStock.StockID != 8)
             {
                 OK = false;
             }
@@ -195,13 +195,13 @@ namespace Testing3
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StockID = 9;
+            Int32 StockID = 8;
 
             //invoke the method
             Found = AnStock.Find(StockID);
 
             //check the Stock ID
-            if (AnStock.Brand != "Ford")
+            if (AnStock.Brand != "Kia")
             {
                 OK = false;
             }
@@ -223,13 +223,13 @@ namespace Testing3
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StockID = 9;
+            Int32 StockID = 8;
 
             //invoke the method
             Found = AnStock.Find(StockID);
 
             //check the Stock ID
-            if (AnStock.Colour != "Green")
+            if (AnStock.Colour != "Black")
             {
                 OK = false;
             }
@@ -251,13 +251,13 @@ namespace Testing3
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StockID = 9;
+            Int32 StockID = 8;
 
             //invoke the method
             Found = AnStock.Find(StockID);
 
             //check the Stock ID
-            if (AnStock.TypeOfCar != "Pick Up")
+            if (AnStock.TypeOfCar != "Saloon")
             {
                 OK = false;
             }
@@ -279,7 +279,7 @@ namespace Testing3
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StockID = 9;
+            Int32 StockID = 8;
 
             //invoke the method
             Found = AnStock.Find(StockID);
@@ -304,11 +304,11 @@ namespace Testing3
             //create a Boolean variable to record if the date is OK (ASUMEITIS)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 9;
+            Int32 StockID = 8;
             //invoke the method 
             Found = AnStock.Find(StockID);
             //check the dateAdded property
-            if (AnStock.YearOfCar != Convert.ToDateTime("25/01/2000"))
+            if (AnStock.YearOfCar != Convert.ToDateTime("02/02/2021"))
             {
 
                 OK = false;
@@ -331,13 +331,13 @@ namespace Testing3
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StockID = 9;
+            Int32 StockID = 8;
 
             //invoke the method
             Found = AnStock.Find(StockID);
 
             //check the Stock ID
-            if (AnStock.Prices != 7000)
+            if (AnStock.Prices != 3600)
             {
                 OK = false;
             }
