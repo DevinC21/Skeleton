@@ -18,9 +18,10 @@
         <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 153px; top: 464px; position: absolute"></asp:TextBox>
 
         <asp:Button ID="btnApplyFilter" runat="server" style="z-index: 1; left: 15px; top: 504px; position: absolute" width="120px" Text="Apply Filter" OnClick="btnApplyFilter_Click" />
-        <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 157px; top: 504px; position: absolute" width="120px" Text="Clear Filter" OnClick="btnClearFilter_Click" />
+        <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 165px; top: 505px; position: absolute" width="120px" Text="Clear Filter" OnClick="btnClearFilter_Click" />
     
         
+        <asp:Button ID="BtnMainMenu" runat="server" style="z-index: 1; left: 163px; top: 567px; position: absolute; right: 333px; width: 169px;" Text="Return to Main Menu" OnClick="btnMainMenu_Click" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 14px; top: 569px; position: absolute"></asp:Label>
     </form>
 </body>

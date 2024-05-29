@@ -17,6 +17,14 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayOrders();
         }
+        //create a new instance of clsUserLogin
+        clsOrdersLogin AnLogin = new clsOrdersLogin();
+
+        //get data from the session object
+        AnLogin = (clsOrdersLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayOrders()
@@ -85,6 +93,12 @@ public partial class _1_List : System.Web.UI.Page
         lstOrdersList.DataValueField = "OrderID";
         lstOrdersList.DataTextField = "OrderFullName";
         lstOrdersList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+
     }
 }
 

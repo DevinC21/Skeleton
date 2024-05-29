@@ -15,13 +15,13 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AnOrders = (clsOrders)Session["AnOrders"];
         //display the order fullname for this entry
-        Response.Write(AnOrders.OrderFullName + "<br>");
-        Response.Write(AnOrders.OrderID + "<br>");
-        Response.Write(AnOrders.OrderDescription + "<br>");
-        Response.Write(AnOrders.OrderDate + "<br>");
-        Response.Write(AnOrders.Payment + "<br>");
-        Response.Write(AnOrders.OrderReturn + "<br>");
-        Response.Write(AnOrders.OrderStatus + "<br>");
+        Response.Write("Order Full Name = " + AnOrders.OrderFullName + "<br>");
+        Response.Write("Order ID = " + AnOrders.OrderID + "<br>");
+        Response.Write("Order Description = " + AnOrders.OrderDescription + "<br>");
+        Response.Write("Order Date = " + AnOrders.OrderDate + "<br>");
+        Response.Write("Payment = " + AnOrders.Payment + "<br>");
+        Response.Write("Order Return = " + AnOrders.OrderReturn + "<br>");
+        Response.Write("Order Status = " + AnOrders.OrderStatus + "<br>");
 
     }
 
