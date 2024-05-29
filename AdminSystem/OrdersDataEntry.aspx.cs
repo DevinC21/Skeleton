@@ -21,6 +21,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
+    void DisplayOrder()
+    {
+        clsOrdersCollection Orders = new clsOrdersCollection();
+        Orders.ThisOrders.Find(OrderID);
+
+        txtOrderID.Text = Orders.ThisOrders.OrderID.ToString();
+        txtOrderFullName.Text = Orders.ThisOrders.OrderFullName.ToString();
+        txtOrderDescription.Text = Orders.ThisOrders.OrderDescription.ToString();
+        txtOrderDate.Text = Orders.ThisOrders.OrderDate.ToString();
+        chkPayment.Checked = Orders.ThisOrders.Payment;
+        txtOrderReturn.Text = Orders.ThisOrders.OrderReturn.ToString();
+        txtOrderStatus.Text = Orders.ThisOrders.OrderStatus.ToString();
+
+
+    }
+
     protected void btnOK_Click1(object sender, EventArgs e)
     {
         //create a new instance of clsOrders
@@ -55,17 +71,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             AnOrders.OrderDescription = OrderDescription;
 
-            AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-
-            AnOrders.Payment = chkPayment.Checked;
-
             AnOrders.OrderReturn = OrderReturn;
 
             AnOrders.OrderStatus = OrderStatus;
 
-            clsOrdersCollection OrdersList = new clsOrdersCollection();
+            AnOrders.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
-            OrdersList.ThisOrders = AnOrders;
+            AnOrders.Payment = chkPayment.Checked;
+
+            clsOrdersCollection OrdersList = new clsOrdersCollection();
 
             if (OrderID == -1)
             {
@@ -112,21 +126,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-    void DisplayOrder()
-    {
-        clsOrdersCollection Orders = new clsOrdersCollection();
-        Orders.ThisOrders.Find(OrderID);
-
-        txtOrderID.Text = Orders.ThisOrders.OrderID.ToString();
-        txtOrderFullName.Text = Orders.ThisOrders.OrderFullName.ToString();
-        txtOrderDescription.Text = Orders.ThisOrders.OrderDescription.ToString();
-        txtOrderDate.Text = Orders.ThisOrders.OrderDate.ToString();
-        chkPayment.Checked = Orders.ThisOrders.Payment;
-        txtOrderReturn.Text = Orders.ThisOrders.OrderReturn.ToString();
-        txtOrderStatus.Text = Orders.ThisOrders.OrderStatus.ToString();
-
-
-    }
+   
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         //redirect back to the main page
