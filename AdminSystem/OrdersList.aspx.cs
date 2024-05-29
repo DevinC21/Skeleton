@@ -69,7 +69,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnApplyFilter_Click(object sender, EventArgs e)
     {
         clsOrdersCollection AnOrders = new clsOrdersCollection();
-        AnOrders.ReportByOrderFullName("txtFilter.Text");
+        AnOrders.ReportByOrderFullName(txtFilter.Text);
         lstOrdersList.DataSource = AnOrders.OrdersList;
         lstOrdersList.DataValueField = "OrderID";
         lstOrdersList.DataTextField = "OrderFullName";

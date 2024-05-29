@@ -16,7 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             if (OrderID != -1)
             {
-                DisplayOrders();
+                DisplayOrder();
             }
         }
     }
@@ -67,8 +67,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             OrdersList.ThisOrders = AnOrders;
 
-            Session["AnOrders"] = AnOrders;
-
             if (OrderID == -1)
             {
                 OrdersList.ThisOrders = AnOrders;
@@ -76,12 +74,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
             else
             {
-                OrdersList.ThisOrders.Find(AnOrders);
+                OrdersList.ThisOrders.Find(OrderID);
                 OrdersList.ThisOrders = AnOrders;
                 OrdersList.Update();
 
             }
-            Response.Redirect("OrdersViewer.aspx");
+            Response.Redirect("OrdersList.aspx");
         }
         else
         {
@@ -114,7 +112,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-    void DisplayOrders()
+    void DisplayOrder()
     {
         clsOrdersCollection Orders = new clsOrdersCollection();
         Orders.ThisOrders.Find(OrderID);
@@ -128,5 +126,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtOrderStatus.Text = Orders.ThisOrders.OrderStatus.ToString();
 
 
+    }
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("OrdersList.aspx");
     }
 }
