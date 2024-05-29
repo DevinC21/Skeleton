@@ -49,6 +49,7 @@
     <Compile Include="clsStock.cs" />
     <Compile Include="clsOrders.cs" />
     <Compile Include="clsStockCollection.cs" />
+    <Compile Include="clsStockLogin.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsUserCollection.cs" />
     <Compile Include="clsUserLogin.cs" />
