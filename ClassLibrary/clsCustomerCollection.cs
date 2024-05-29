@@ -51,30 +51,12 @@ namespace ClassLibrary
 
         public clsCustomerCollection()
         {
-            Int32 Index = 0;
-
-            Int32 RecordCount = 0;
-
-            clsDataConnection DB = new clsDataConnection();
-
+            // object for data connection
+           clsDataConnection DB = new clsDataConnection();
+            // execute the stored procedure
             DB.Execute("sproc_tblCustomer_SelectAll");
-
-            RecordCount = DB.Count;
-
-            while (Index < RecordCount)
-            {
-                clsCustomer AnCustomer = new clsCustomer();
-
-                AnCustomer.CustomerConfirmed = Convert.ToBoolean(DB.DataTable.Rows[Index]["CustomerConfirmed"]);
-                AnCustomer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
-                AnCustomer.CustomerUsername = Convert.ToString(DB.DataTable.Rows[Index]["CustomerUsername"]);
-                AnCustomer.CustomerPass = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPass"]);
-                AnCustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["Customeremail"]);
-                AnCustomer.BankDetails = Convert.ToInt32(DB.DataTable.Rows[Index]["BankDetails"]);
-                AnCustomer.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
-                mCustomerList.Add(AnCustomer);
-                Index++;
-            }
+            // populate the array list with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -118,6 +100,50 @@ namespace ClassLibrary
             //Set the parameters and execute for the new stored procedure
             DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
             DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByCustomerUsername(string CustomerUsername)
+        {
+            // filters the records based on a full or partial username
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            // send the username parameter to the database
+            DB.AddParameter("@CustomerUsername", CustomerUsername);
+            // Execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerUsername");
+            // Populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            // Populates the array list based on the data table in the parameter DB
+            // Variable for the index
+            Int32 Index = 0;
+            // Variable to store the record count
+            Int32 RecordCount;
+            // get the count of records
+            RecordCount = DB.Count;
+            // clear the private array list
+            mCustomerList = new List<clsCustomer>();
+            // while there are records to process
+            while (Index < RecordCount)
+            {
+                // create a blank Customer object
+                clsCustomer AnCustomer = new clsCustomer();
+                // read in the firles from the current record
+                AnCustomer.CustomerConfirmed = Convert.ToBoolean(DB.DataTable.Rows[Index]["CustomerConfirmed"]);
+                AnCustomer.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                AnCustomer.CustomerUsername = Convert.ToString(DB.DataTable.Rows[Index]["CustomerUsername"]);
+                AnCustomer.CustomerPass = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPass"]);
+                AnCustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
+                AnCustomer.BankDetails = Convert.ToInt32(DB.DataTable.Rows[Index]["BankDetails"]);
+                AnCustomer.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
+                // add the record to the private data member
+                mCustomerList.Add(AnCustomer);
+                // point at the next record
+                Index++;
+            }
         }
     }
 

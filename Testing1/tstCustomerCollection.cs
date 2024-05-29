@@ -193,5 +193,58 @@ namespace Testing1
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByCustomerUsernameMethodOK()
+        {
+            // create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            // Create an instance of the filtered data
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            // apply a blank string (Should return all records)
+            FilteredCustomer.ReportByCustomerUsername("");
+            // test to see that the two values are the same
+            Assert.AreEqual(AllCustomer.Count, FilteredCustomer.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerUsernameNoneFound()
+        {
+            // create an instance of the class we want to create
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            // apply a post code that doesnt exist
+            FilteredCustomer.ReportByCustomerUsername("xxx xxx");
+            // test to see that the two values are the same
+            Assert.AreEqual(0, FilteredCustomer.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerUsernameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+
+            Boolean OK = true;
+
+            FilteredCustomer.ReportByCustomerUsername("dfdf");
+
+            if (FilteredCustomer.Count == 2)
+            {
+                if (FilteredCustomer.CustomerList[0].CustomerId != 4)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomer.CustomerList[1].CustomerId != 87)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+
     }
 }
