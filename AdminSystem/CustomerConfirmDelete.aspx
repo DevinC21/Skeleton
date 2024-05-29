@@ -8,8 +8,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <p>
+     <asp:Button ID="btnYes" runat="server" style="z-index: 1; left: 43px; top: 184px; position: absolute; width: 57px;" Text="Yes" OnClick="btnYes_Click" />
+</p>
+<p>
+    &nbsp;</p>
+     <asp:Button ID="btnNo" runat="server" style="z-index: 1; left: 138px; top: 185px; position: absolute; width: 73px;" Text="No" OnClick="btnNo_Click" />
+<p>
+    &nbsp;</p>
+<asp:Label ID="lblDeleteRecord" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
     </form>
 </body>
 </html>

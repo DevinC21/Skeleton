@@ -159,5 +159,39 @@ namespace Testing1
             Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            // Create a new instance of the class we want to create
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            // Create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            // Variable to store the primary Key
+            Int32 PrimaryKey = 0;
+
+            // Set its properties
+            TestItem.CustomerConfirmed = true;
+            TestItem.CustomerId = 1;
+            TestItem.BankDetails = 1;
+            TestItem.DateOfBirth = DateTime.Now;
+            TestItem.CustomerUsername = "Name";
+            TestItem.CustomerPass = "Password";
+            TestItem.CustomerEmail = "word@gmail.com";
+            // Set ThisCustomer to the test data
+            AllCustomer.ThisCustomer = TestItem;
+            // Add the record
+            PrimaryKey = AllCustomer.Add();
+            // set the primary key for test data
+            TestItem.CustomerId = PrimaryKey;
+
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+
+            AllCustomer.Delete();
+
+            Boolean Found = AllCustomer.ThisCustomer.Find(PrimaryKey);
+            // test to see if ThisCustomer matches the test data
+            Assert.IsFalse(Found);
+        }
+
     }
 }
