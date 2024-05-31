@@ -16,10 +16,12 @@
          <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 115px; top: 460px; position: absolute" Text="Enter a Brand"></asp:Label>
          <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 260px; top: 460px; position: absolute"></asp:TextBox>
 
-         <asp:Button ID="btnApplyFilter" runat="server" style="z-index: 1; left: 115px; top: 520px; position: absolute" width="120px" Text="Apply Filter" OnClick="btnApplyFilter_Click" />
-         <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 260px; top: 520px; position: absolute" width="120px" Text="Clear Filter" OnClick="btnClearFilter_Click" />
-     
-         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 115px; top: 580px; position: absolute;"></asp:Label>
+         <asp:Button ID="btnApplyFilter" runat="server" style="z-index: 1; left: 65px; top: 520px; position: absolute" width="120px" Text="Apply Filter" OnClick="btnApplyFilter_Click" />
+         <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 210px; top: 520px; position: absolute" width="120px" Text="Clear Filter" OnClick="btnClearFilter_Click" />
+         <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; left: 360px; top: 520px; position: absolute" width="160px" Text="Return to Main Menu" OnClick="btnMainMenu_Click"/>
+
+
+         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 115px; top: 600px; position: absolute;"></asp:Label>
  </form>
 </body>
 </html>
