@@ -19,13 +19,13 @@ public partial class _1_List : System.Web.UI.Page
         }
 
         //create a new instance of clsUserLogin
-        clsUserLogin AnLogin = new clsUserLogin();
+        //clsUserLogin AnLogin = new clsUserLogin();
 
         //get data from the session object
-        AnLogin = (clsUserLogin)Session["AnLogin"];
+        //AnLogin = (clsUserLogin)Session["AnLogin"];
 
         //display the login name
-        Response.Write("Logged in as: " + AnLogin.LoginName);
+        //Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayUsers()
@@ -152,5 +152,17 @@ public partial class _1_List : System.Web.UI.Page
     {
         //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnUser_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsUserLogin
+        clsUserLogin AnLogin = new clsUserLogin();
+
+        //get data from the session object
+        AnLogin = (clsUserLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 }

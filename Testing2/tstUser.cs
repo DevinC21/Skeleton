@@ -309,7 +309,7 @@ namespace Testing2
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 UserID = 6;
+            Int32 UserID = 7;
 
             //invoke the method
             Found = AnUser.Find(UserID);
