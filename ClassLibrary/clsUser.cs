@@ -187,7 +187,7 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Username must be less than 20 characters. ";
             }
-            
+
             //if the User Privileges is less than 4 characters
             if (userPrivileges.Length <= 3)
             {

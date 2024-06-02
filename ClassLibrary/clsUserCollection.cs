@@ -103,14 +103,14 @@ namespace ClassLibrary
             DB.Execute("sproc_tblUser_Update");
         }
 
-        public void Delete ()
+        public void Delete()
         {
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
 
             //set the parameters for the stored procedure
             DB.AddParameter("@UserID", mThisUser.UserID);
-            
+
             //execute the stored procedure
             DB.Execute("sproc_tblUser_Delete");
         }
