@@ -27,6 +27,8 @@
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 32px; top: 442px; position: absolute; right: 606px;" Text="OK" height="26px" width="60px" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 121px; top: 442px; position: absolute" Text="Cancel" />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 348px; top: 97px; position: absolute" Text="Find" />
+        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 280px; top: 442px; position: absolute; width: 163px;" Text="Return to Main Menu" OnClick="BtnMainMenu_Click"/>
     </form>
+
 </body>
 </html>
