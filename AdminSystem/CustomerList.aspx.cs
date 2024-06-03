@@ -10,10 +10,19 @@ public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // if this is the first time the page is displayed
         if (IsPostBack == false)
         {
+            // update the list box
             DisplayCustomers();
         }
+
+        // create a new instance of clsCustomerLogin
+        clsCustomerLogin AnLogin = new clsCustomerLogin();
+        // get data from the session object
+        AnLogin = (clsCustomerLogin)Session["AnLogin"];
+        // display the name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayCustomers()
@@ -106,5 +115,10 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataTextField = "CustomerUsername";
         // bind the data to the list
         lstCustomerList.DataBind();
+    }
+
+    protected void BtnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
