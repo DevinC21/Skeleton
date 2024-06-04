@@ -4,19 +4,71 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+       margin: 0px;
+       padding: 0px;
+       box-sizing: border-box;
+       font-family: "Poppins", sans-serif;
+    }
+
+    body{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+       background: url(https://i.pinimg.com/originals/33/df/9a/33df9a3b57c4fc69cb439678ec370317.jpg) no-repeat;
+       background-size: cover;
+       background-position: center;
+    }
+
+    .ConfirmDelete{
+       width: 550px;
+       background: transparent;
+       border: 2px solid rgba(0, 0, 0, 0.2);
+       backdrop-filter: blur(20px);
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+       color: #4cff00;
+       border-radius: 10px;
+       padding: 30px 40px;
+    }
+
+    .Label{
+       font-size: 20px;
+       font-weight: 500;
+       text-align:center;
+    }
+
+    .Buttons{
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+       gap: 20px;
+       padding-top: 20px;
+    }
+
+  </style>
+  <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <p>
-             <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" style="z-index: 1; left: 43px; top: 184px; position: absolute; width: 57px;" Text="Yes" />
-        </p>
-        <p>
-            &nbsp;</p>
-             <asp:Button ID="btnNo" runat="server" OnClick="btnNo_Click" style="z-index: 1; left: 138px; top: 185px; position: absolute; width: 73px;" Text="No" />
-        <p>
-            &nbsp;</p>
-        <asp:Label ID="lblDeleteRecord" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
+    <div class="ConfirmDelete">
+
+        <div class="Label">
+        <asp:Label ID="lblDelete" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
+        </div>
+
+        <div class="Buttons">
+        <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="80px" />
+        <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="80px" />
+        </div>
+
+    </div>
     </form>
-</body>
+    </body>
 </html>
+

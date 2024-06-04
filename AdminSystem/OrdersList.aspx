@@ -4,25 +4,135 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <style>
+
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+     * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+     }
+
+     text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+
+     body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url(https://stat.overdrive.in/wp-content/odgallery/2019/10/54200_2019-Lamborghini-Huracan-Evo-Spyder_002.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+     }
+
+     .List{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 520px;
+        background: transparent;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        color: #4cff00;
+        border-radius: 10px;
+        padding: 30px 40px;
+     }
+
+     .Label{
+        font-size: 36px;
+        font-weight: 500;
+        text-align:center;
+     }
+
+     .OrdersList{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+
+     .Buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding-top: 20px;
+     }
+
+     .Buttons2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding-top: 20px;
+     }
+
+     .Filter{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding-top: 20px;
+     }
+
+    .Orders{
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+       padding-top: 20px;
+    }
+     </style>
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-        <asp:ListBox ID="lstOrdersList" runat="server" style="z-index: 1; left: 16px; top: 51px; position: absolute; height: 328px; width: 345px"></asp:ListBox>
-        <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 20px; top: 405px; position: absolute" Text="Add" />
-        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 96px; top: 405px; position: absolute; width: 55px;" Text="Edit" />
-        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 179px; top: 404px; position: absolute; margin-bottom: 4px;" Text="Delete" />
-        <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 18px; top: 464px; position: absolute" Text="Enter a Full Name"></asp:Label>
-        <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 153px; top: 464px; position: absolute"></asp:TextBox>
+        <form id="form1" runat="server">
+    <div class="List">
 
-        <asp:Button ID="btnApplyFilter" runat="server" style="z-index: 1; left: 15px; top: 504px; position: absolute" width="120px" Text="Apply Filter" OnClick="btnApplyFilter_Click" />
-        <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 165px; top: 505px; position: absolute" width="120px" Text="Clear Filter" OnClick="btnClearFilter_Click" />
-    
-        
-        <asp:Button ID="BtnMainMenu" runat="server" style="z-index: 1; left: 163px; top: 567px; position: absolute; right: 333px; width: 169px;" Text="Return to Main Menu" OnClick="btnMainMenu_Click" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 14px; top: 569px; position: absolute"></asp:Label>
+        <div class="Label">
+        <asp:Label ID="lblOrder" runat="server" Text="Order List Page"></asp:Label>
+        </div>
+
+
+        <div class="OrdersList">
+        <asp:ListBox ID="lstOrdersList" runat="server" Height="250px" Width="500px" BackColor="Transparent" ForeColor="White"></asp:ListBox>
+        </div>
+
+        <div class="Buttons">
+        <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Width="60px" Text="Add" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        <asp:Button ID="btnEdit" runat="server" Width="80px" Text="Edit" OnClick="btnEdit_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        <asp:Button ID="btnDelete" runat="server" Width="100px" Text="Delete" OnClick="btnDelete_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        </div>
+
+        <div class="Filter">
+        <asp:Label ID="lblFilter" runat="server" Text="Enter a Username" ForeColor="White"></asp:Label>
+        <asp:TextBox ID="txtFilter" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
+        </div>
+
+        <div class="Buttons2">
+        <asp:Button ID="btnApplyFilter" runat="server" Width="140px" Text="Apply Filter" OnClick="btnApplyFilter_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        <asp:Button ID="btnClearFilter" runat="server" Width="140px" Text="Clear Filter" OnClick="btnClearFilter_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        <asp:Button ID="btnMainMenu" runat="server" Width="180px" Text="Return to Main Menu" OnClick="btnMainMenu_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        </div>
+
+        <div class="Orders">
+        <asp:Button ID="btnOrders" runat="server" Width="60px" Text="Orders" OnClick="btnOrders_Click" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" />
+        </div>
+
+        <div class="Error">
+        <asp:Label ID="lblError" runat="server"></asp:Label>
+        </div>
+
+    </div>
     </form>
 </body>
 </html>
