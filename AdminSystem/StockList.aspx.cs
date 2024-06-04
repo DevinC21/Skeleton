@@ -18,13 +18,13 @@ public partial class _1_List : System.Web.UI.Page
         }
 
         //create a new instance of clsUserLogin
-        clsStockLogin AnLogin = new clsStockLogin();
+        //clsStockLogin AnLogin = new clsStockLogin();
 
         //get data from the session object
-        AnLogin = (clsStockLogin)Session["AnLogin"];
+        //AnLogin = (clsStockLogin)Session["AnLogin"];
 
         //display the login name
-        Response.Write("Logged in as: " + AnLogin.LoginName);
+        //Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayStocks()
@@ -151,5 +151,17 @@ public partial class _1_List : System.Web.UI.Page
     {
         //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnStock_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsStockLogin
+        clsStockLogin AnLogin = new clsStockLogin();
+
+        //get data from the session object
+        AnLogin = (clsStockLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 }
