@@ -20,7 +20,7 @@
        justify-content: center;
        align-items: center;
        min-height: 100vh;
-       background: url(https://images.alphacoders.com/112/thumb-1920-1121517.jpg) no-repeat;
+       background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cac3c7e-7310-4788-a635-e9e6b224b84d/dhj4nm6-6304e8d8-fb47-4199-8748-fb6c5a08ffe1.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjYWMzYzdlLTczMTAtNDc4OC1hNjM1LWU5ZTZiMjI0Yjg0ZFwvZGhqNG5tNi02MzA0ZThkOC1mYjQ3LTQxOTktODc0OC1mYjZjNWEwOGZmZTEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.N9r9wqyszruMkB3Pj9GbpReAQjZKgTwAETmiBcT9mvk) no-repeat;
        background-size: cover;
        background-position: center;
     }

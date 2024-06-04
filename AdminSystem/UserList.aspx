@@ -26,7 +26,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background: url(https://www.wallpaperflare.com/static/1020/166/418/458-italia-ferrari-red-red-wallpaper.jpg) no-repeat;
+        background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cac3c7e-7310-4788-a635-e9e6b224b84d/dhj4o6g-eab11465-9be7-479b-a62c-68b18a471285.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjYWMzYzdlLTczMTAtNDc4OC1hNjM1LWU5ZTZiMjI0Yjg0ZFwvZGhqNG82Zy1lYWIxMTQ2NS05YmU3LTQ3OWItYTYyYy02OGIxOGE0NzEyODUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.nc72QdPQ4VN-mGuLCTKsup6ZHGp71G6JkQ0kPMxUuLA) no-repeat;
         background-size: cover;
         background-position: center;
      }
