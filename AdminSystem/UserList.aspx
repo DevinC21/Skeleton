@@ -40,7 +40,7 @@
         border: 2px solid rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(20px);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        color: #fff;
+        color: red;
         border-radius: 10px;
         padding: 30px 40px;
      }

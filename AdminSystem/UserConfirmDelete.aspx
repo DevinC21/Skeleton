@@ -20,7 +20,7 @@
        justify-content: center;
        align-items: center;
        min-height: 100vh;
-       background: url(https://www.drivingemotions.com/galleria_images/423/423_p38_l.jpg) no-repeat;
+       background: url(http://s.aolcdn.com/commerce/blogcdn/slideshows/images/slides/191/653/7/S1916537/slug/l/130158car-1.jpg) no-repeat;
        background-size: cover;
        background-position: center;
     }
@@ -31,7 +31,7 @@
        border: 2px solid rgba(0, 0, 0, 0.2);
        backdrop-filter: blur(20px);
        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-       color: #fff;
+       color: red;
        border-radius: 10px;
        padding: 30px 40px;
     }

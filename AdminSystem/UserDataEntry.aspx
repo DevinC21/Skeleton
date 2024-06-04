@@ -20,7 +20,7 @@
        justify-content: center;
        align-items: center;
        min-height: 100vh;
-       background: url(https://images.hdqwalls.com/download/ferrari-458-italia-rear-cgi-pm-1440x900.jpg) no-repeat;
+       background: url(https://images.alphacoders.com/112/thumb-1920-1121517.jpg) no-repeat;
        background-size: cover;
        background-position: center;
     }
@@ -31,7 +31,7 @@
        border: 2px solid rgba(0, 0, 0, 0.2);
        backdrop-filter: blur(20px);
        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-       color: #fff;
+       color: red;
        border-radius: 10px;
        padding: 30px 40px;
        display: flex;

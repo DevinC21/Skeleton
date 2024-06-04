@@ -20,7 +20,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background: url(https://th.bing.com/th/id/R.dc29d4e1ac9974fdeb1ba6524b7e3edb?rik=qMqvam9x5dxnmw&riu=http%3a%2f%2fwww.marinoperformancemotors.com%2fimagetag%2f12892%2f3%2fl%2fUsed-2014-Ferrari-458-Italia.jpg&ehk=ZtXx0oGZeiDH3FwvSEfSGDHWjODUuxjbf8dv5XT%2fccw%3d&risl=&pid=ImgRaw&r=0) no-repeat;
+        background: url(https://25.media.tumblr.com/261282fc1e1ef2ceb504856a71bbcdff/tumblr_msz5lhLmeF1rnxn7co1_r1_500.gif) no-repeat;
         background-size: cover;
         background-position: center;
      }
@@ -31,7 +31,7 @@
         border: 2px solid rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(20px);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        color: #fff;
+        color: red;
         border-radius: 10px;
         padding: 30px 40px;
      }
