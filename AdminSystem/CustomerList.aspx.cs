@@ -22,7 +22,7 @@ public partial class _1_List : System.Web.UI.Page
         // get data from the session object
         AnLogin = (clsCustomerLogin)Session["AnLogin"];
         // display the name
-        Response.Write("Logged in as: " + AnLogin.LoginName);
+        //Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayCustomers()
