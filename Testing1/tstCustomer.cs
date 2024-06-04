@@ -380,90 +380,6 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void DateOfBirthExtremeMin()
-        {
-            clsCustomer AnCustomer = new clsCustomer();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-1000);
-            string DateOfBirth = TestDate.ToString();
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateOfBirthMin()
-        {
-            clsCustomer AnCustomer = new clsCustomer();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = DateTime.Now.Date.AddYears(-100);
-            string DateOfBirth = TestDate.ToString();
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateOfBirthMinLessOne()
-        {
-            clsCustomer AnCustomer = new clsCustomer();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(-1);
-            string DateOfBirth = TestDate.ToString();
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateOfBirthMinPlusOne()
-        {
-            clsCustomer AnCustomer = new clsCustomer();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(1);
-            string DateOfBirth = TestDate.ToString();
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateOfBirthExtremeMax()
-        {
-            clsCustomer AnCustomer = new clsCustomer();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-12);
-            string DateOfBirth = TestDate.ToString();
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateOfBirthInvalidData()
-        {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-
-            //string variable to store any error message
-            String Error = "";
-
-            //set the DateOfBirth to a non date value
-            string DateOfBirth = "this is not a date!";
-
-            //invoke the method
-            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, BankDetails, DateOfBirth);
-
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
         public void CustomerPassMinLessOne()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -647,6 +563,116 @@ namespace Testing1
             string CustomerEmail = "";
             CustomerEmail = CustomerEmail.PadLeft(500, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthExtremeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-1000);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-100).AddDays(-1);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-100);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-100).AddDays(1);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMaxLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-12).AddDays(-1);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-12);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMaxPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddYears(-12).AddDays(1);
+            string DateOfBirth = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsCustomer AnCustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //set the DateOfBirth to a non date value
+            string DateOfBirth = "this is not a date!";
+
+            //invoke the method
+            Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
+
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 

@@ -169,6 +169,34 @@ namespace ClassLibrary
                 Error = Error + "The Email must be less than 50 characters : ";
             }
 
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the UserDob value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+
+                //check to see if the date is more than 100 years ago
+                if (DateTemp < DateComp.AddYears(-100))
+                {
+                    //record the error
+                    Error = Error + "The Date cannot be more than 100 years ago. ";
+                }
+
+                //check to see if the date is less than 12 years ago
+                if (DateTemp > DateComp.AddYears(-12))
+                {
+                    //record the error
+                    Error = Error + "The Date cannot be less than 12 years ago. ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The Date was not a valid date. ";
+            }
+
             if (bankDetails.Length == 0)
             {
                 Error = Error + "The Bank Details may not be blank : ";
@@ -179,29 +207,7 @@ namespace ClassLibrary
                 Error = Error + "The Bank Details must be less than 50 characters : ";
             }
 
-            DateTime DateComp = DateTime.Now.Date;
-            try
-            {
-                DateTemp = Convert.ToDateTime(dateOfBirth);
-
-                if (DateTemp < DateComp.AddYears(-100))
-                {
-                    Error = Error + "The Date cannot be more 100 years ago : ";
-                }
-
-                if (DateTemp > DateComp.AddYears(-12))
-                {
-                    Error = Error + "The date cannot less than 12 years ago : ";
-                }
-            }
-            catch
-            {
-                Error = Error + "The date was not a valid date : ";
-            }
-
             return Error;
-
-
         }
 
     }
