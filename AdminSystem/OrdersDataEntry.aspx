@@ -179,6 +179,8 @@
         <asp:TextBox ID="txtOrderStatus" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
         </div>
 
+        </div>
+
         <div class="Payment">
         <asp:CheckBox ID="chkPayment" runat="server" OnCheckedChanged="chkPayment_CheckedChanged" Text="Payment Confirmed" />
         </div>
