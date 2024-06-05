@@ -20,7 +20,7 @@
            justify-content: center;
            align-items: center;
            min-height: 100vh;
-           background: url(https://travelnevada.com/wp-content/uploads/2020/05/lass-id-original-1570485087-5d9bb35fcedaf.jpg) no-repeat;
+           background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cac3c7e-7310-4788-a635-e9e6b224b84d/dhja574-7fe2df9b-8bd3-418e-8588-a6cd2440042a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjYWMzYzdlLTczMTAtNDc4OC1hNjM1LWU5ZTZiMjI0Yjg0ZFwvZGhqYTU3NC03ZmUyZGY5Yi04YmQzLTQxOGUtODU4OC1hNmNkMjQ0MDA0MmEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.qLLoxJ5BH9fbsiAG7YzyG5yHQeYPQTEBN2El9ZmRqQ8) no-repeat;
            background-size: cover;
            background-position: center;
         }
