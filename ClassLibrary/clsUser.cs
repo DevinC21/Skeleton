@@ -166,7 +166,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string userPrivileges, string userDob, string userName, string userContactNumber)
+        public string Valid(string userPrivileges, string userDob, string userName, string userContactNumber, string customerID)
         {
             //create a string variable to store the error
             String Error = "";
@@ -178,28 +178,28 @@ namespace ClassLibrary
             if (userName.Length <= 4)
             {
                 //record the error
-                Error = Error + "The Username must be more than 5 characters. ";
+                Error = Error + "The Username must contain more than 5 characters. ";
             }
 
             //if the Username is greater than 20 characters
             if (userName.Length >= 21)
             {
                 //record the error
-                Error = Error + "The Username must be less than 20 characters. ";
+                Error = Error + "The Username can contain up to 20 characters. ";
             }
 
             //if the User Privileges is less than 4 characters
             if (userPrivileges.Length <= 3)
             {
                 //record the error
-                Error = Error + "The User Privilege must contain at least 4 characters. ";
+                Error = Error + "The User Privileges must contain at least 4 characters. ";
             }
 
             //if the User Privileges is greater than 5 characters
             if (userPrivileges.Length >= 6)
             {
                 //record the error
-                Error = Error + "The User Privilege must be less than 6 characters. ";
+                Error = Error + "The User Privileges can contain up to 5 characters. ";
             }
 
             //create an instance of DateTime to compare with DateTemp
@@ -232,25 +232,25 @@ namespace ClassLibrary
                 Error = Error + "The Date was not a valid date. ";
             }
 
-            Int32 IntTemp = 100000000;
+            Int32 IntTemp1 = 100000000;
 
             try
             {
-                //copy the UserContactNumber value to the DateTemp variable
-                IntTemp = Convert.ToInt32(userContactNumber);
+                //copy the UserContactNumber value to the IntTemp variable
+                IntTemp1 = Convert.ToInt32(userContactNumber);
 
                 //if the User Contact Number is less than 9 integers
                 if (userContactNumber.Length < 9)
                 {
                     //record the error
-                    Error = Error + "The User Contact Number must be more than 9 integers. ";
+                    Error = Error + "The User Contact Number must contain more than 8 integers. ";
                 }
 
                 //if the User Contact Number is greater than 9 integers
                 if (userContactNumber.Length > 9)
                 {
                     //record the error
-                    Error = Error + "The User Contact Number must be less than 9 integers. ";
+                    Error = Error + "The User Contact Number must contain less than 10 integers. ";
                 }
             }
             catch
@@ -258,7 +258,33 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The User Contact Number was not a valid value. ";
             }
-            
+
+            Int32 IntTemp2 = 1;
+
+            try
+            {
+                //copy the CustomerID value to the IntTemp variable
+                IntTemp2 = Convert.ToInt32(customerID);
+
+                //if the CustomerID is less than 1 integer
+                if (customerID.Length < 1)
+                {
+                    //record the error
+                    Error = Error + "The Customer ID must contain more than 1 integers. ";
+                }
+
+                //if the Customer ID is greater than 9 integers
+                if (customerID.Length > 9)
+                {
+                    //record the error
+                    Error = Error + "The Customer ID must contain less than 10 integers. ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The Customer ID was not a valid value. ";
+            }
 
             //return any error messages
             return Error;
