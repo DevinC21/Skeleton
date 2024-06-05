@@ -28,5 +28,3 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     }
 }
 
-
-   
