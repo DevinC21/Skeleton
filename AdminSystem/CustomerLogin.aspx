@@ -20,7 +20,7 @@
        justify-content: center;
        align-items: center;
        min-height: 100vh;
-       background: url(https://i.ebayimg.com/00/s/NzU4WDEwMjQ=/z/8VQAAOSwTzhfFymI/$_86.JPG) no-repeat;
+       background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cac3c7e-7310-4788-a635-e9e6b224b84d/dhj6oxf-3c86ee29-1f3f-4e59-898b-18409df0cde4.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjYWMzYzdlLTczMTAtNDc4OC1hNjM1LWU5ZTZiMjI0Yjg0ZFwvZGhqNm94Zi0zYzg2ZWUyOS0xZjNmLTRlNTktODk4Yi0xODQwOWRmMGNkZTQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.yIaNLhDYLnAZ5sxUwBDlXYoX6CgW6cXdxtIsyz2n2ps) no-repeat;
        background-size: cover;
        background-position: center;
     }
@@ -31,13 +31,13 @@
        border: 2px solid rgba(0, 0, 0, 0.2);
        backdrop-filter: blur(20px);
        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-       color: #fff;
        border-radius: 10px;
        padding: 30px 40px;
+       color: dodgerblue;
     }
 
     .CustomerLoginPage{
-       font-size: 36px;
+       font-size: 30px;
        font-weight: 500;
        text-align:center;
     }
@@ -99,8 +99,8 @@
     <form id="form1" runat="server">
     <div class="Login">
 
-        <div class="UserLoginPage">
-        <asp:Label ID="lblLogin" runat="server" Text="User Login Page"></asp:Label>
+        <div class="CustomerLoginPage">
+        <asp:Label ID="lblLogin" runat="server" Text="Customer Login Page"></asp:Label>
         </div>
 
         <div class="LoginName">

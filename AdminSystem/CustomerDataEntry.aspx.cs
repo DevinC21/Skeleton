@@ -26,14 +26,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
+    void DisplayCustomer()
+    {
+        // Create an instance of the customer book
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        // find the record to update
+        Customer.ThisCustomer.Find(CustomerId);
+
+        txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
+        txtCustomerUsername.Text = Customer.ThisCustomer.CustomerUsername.ToString();
+        txtPassword.Text = Customer.ThisCustomer.CustomerPass.ToString();
+        txtEmail.Text = Customer.ThisCustomer.CustomerEmail.ToString();
+        txtDateOfBirth.Text = Customer.ThisCustomer.DateOfBirth.ToString();
+        txtBankDetails.Text = Customer.ThisCustomer.BankDetails.ToString();
+        chkConfirmed.Checked = Customer.ThisCustomer.CustomerConfirmed;
+    }
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
        //create a new instance of clsCustomer
        clsCustomer AnCustomer = new clsCustomer();
 
-
         // capture the username
-        String CustomerUsername = txtUsername.Text;
+        String CustomerUsername = txtCustomerUsername.Text;
 
         // capture the password
         String CustomerPass = txtPassword.Text;
@@ -44,11 +59,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // capture the Bank Details
         String BankDetails = txtBankDetails.Text;
 
-        // capture the Confirmed
-        String CustomerConfirmed = chkConfirmed.Text;
-
         //capture the UserDob
         String DateOfBirth = txtDateOfBirth.Text;
+
+        // capture the Confirmed
+        String CustomerConfirmed = chkConfirmed.Text;
 
         // Variable to store error messages
         String Error = "";
@@ -106,7 +121,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Found == true)
         {
-            txtUsername.Text = AnCustomer.CustomerUsername;
+            txtCustomerUsername.Text = AnCustomer.CustomerUsername;
             txtPassword.Text = AnCustomer.CustomerPass;
             txtEmail.Text = AnCustomer.CustomerEmail;
             txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
@@ -115,20 +130,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    void DisplayCustomer()
+    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
     {
-        // Create an instance of the customer book
-        clsCustomerCollection Customer = new clsCustomerCollection();
-        // find the record to update
-        Customer.ThisCustomer.Find(CustomerId);
-        txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
-        txtUsername.Text = Customer.ThisCustomer.CustomerUsername.ToString();
-        txtPassword.Text = Customer.ThisCustomer.CustomerPass.ToString();
-        txtEmail.Text = Customer.ThisCustomer.CustomerEmail.ToString();
-        txtDateOfBirth.Text = Customer.ThisCustomer.DateOfBirth.ToString();
-        txtBankDetails.Text = Customer.ThisCustomer.BankDetails.ToString();
-        chkConfirmed.Checked = Customer.ThisCustomer.CustomerConfirmed;
 
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("CustomerList.aspx");
     }
 
     protected void BtnMainMenu_Click(object sender, EventArgs e)
