@@ -121,6 +121,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Found == true)
         {
+            txtCustomerId.Text = AnCustomer.CustomerId.ToString();
             txtCustomerUsername.Text = AnCustomer.CustomerUsername;
             txtPassword.Text = AnCustomer.CustomerPass;
             txtEmail.Text = AnCustomer.CustomerEmail;
@@ -128,11 +129,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtBankDetails.Text = AnCustomer.BankDetails.ToString();
             chkConfirmed.Checked = AnCustomer.CustomerConfirmed;
         }
-    }
-
-    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-    {
-
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

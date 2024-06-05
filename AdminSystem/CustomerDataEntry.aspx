@@ -181,7 +181,7 @@
              </div>
         
              <div class="CustomerConfirmed">
-                 <asp:CheckBox ID="chkConfirmed" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Confirmed?"/>
+                 <asp:CheckBox ID="chkConfirmed" runat="server" Text="Confirmed?"/>
              </div>
       
              <div class="Error">
