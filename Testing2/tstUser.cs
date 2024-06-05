@@ -14,6 +14,7 @@ namespace Testing2
         string UserPrivileges = "Admin";
         string UserDob = "11/11/1990";
         string UserName = "Justin Dolly";
+        string UserContactNumber = "777777777";
 
         [TestMethod]
         public void InstanceOK()
@@ -362,7 +363,7 @@ namespace Testing2
             string Error = "";
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges,UserDob,UserName);
+            Error = AnUser.Valid(UserPrivileges,UserDob,UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -382,7 +383,7 @@ namespace Testing2
             UserName = UserName.PadRight(1, 'a'); //this should trigger an error
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -402,7 +403,7 @@ namespace Testing2
             UserName = UserName.PadRight(4, 'a'); //this should trigger an error
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -422,7 +423,7 @@ namespace Testing2
             UserName = UserName.PadRight(5, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -442,7 +443,7 @@ namespace Testing2
             UserName = UserName.PadRight(6, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -462,7 +463,7 @@ namespace Testing2
             UserName = UserName.PadRight(19, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -482,7 +483,7 @@ namespace Testing2
             UserName = UserName.PadRight(20, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -502,7 +503,7 @@ namespace Testing2
             UserName = UserName.PadRight(21, 'a'); //this should fail
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -522,7 +523,7 @@ namespace Testing2
             UserName = UserName.PadRight(500, 'a'); //this should fail
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -542,7 +543,7 @@ namespace Testing2
             UserName = UserName.PadRight(12, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -562,7 +563,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(1, 'a'); //this should trigger an error
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -582,7 +583,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(3, 'a'); //this should trigger an error
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -602,7 +603,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(4, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -622,7 +623,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(5, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -642,7 +643,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(4, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -662,7 +663,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(5, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -682,7 +683,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(6, 'a'); //this should be ok
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -702,7 +703,7 @@ namespace Testing2
             UserPrivileges = UserPrivileges.PadRight(10, 'a'); //this should fail
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -730,7 +731,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -758,7 +759,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -786,7 +787,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -814,7 +815,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -842,7 +843,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -870,7 +871,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -898,7 +899,7 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -926,13 +927,11 @@ namespace Testing2
             string UserDob = TestDate.ToString();
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-
-
 
         [TestMethod]
         public void UserDobInvalidData()
@@ -947,7 +946,159 @@ namespace Testing2
             string UserDob = "this is not a date!";
 
             //invoke the method
-            Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "7"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "12345678"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberMin()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "123456789"; //this should be fine
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "1234567890"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "12345678"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "123456789"; //this should be fine
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "1234567890"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UserContactNumberExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsUser AnUser = new clsUser();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string UserContactNumber = "123456789123456"; //this should trigger an error
+
+            //invoke the method
+            Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber);
 
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");

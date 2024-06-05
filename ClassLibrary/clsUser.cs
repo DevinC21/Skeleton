@@ -166,7 +166,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string userPrivileges, string userDob, string userName)
+        public string Valid(string userPrivileges, string userDob, string userName, string userContactNumber)
         {
             //create a string variable to store the error
             String Error = "";
@@ -231,6 +231,34 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Date was not a valid date. ";
             }
+
+            Int32 IntTemp = 100000000;
+
+            try
+            {
+                //copy the UserContactNumber value to the DateTemp variable
+                IntTemp = Convert.ToInt32(userContactNumber);
+
+                //if the User Contact Number is less than 9 integers
+                if (userContactNumber.Length < 9)
+                {
+                    //record the error
+                    Error = Error + "The User Contact Number must be more than 9 integers. ";
+                }
+
+                //if the User Contact Number is greater than 9 integers
+                if (userContactNumber.Length > 9)
+                {
+                    //record the error
+                    Error = Error + "The User Contact Number must be less than 9 integers. ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The User Contact Number was not a valid value. ";
+            }
+            
 
             //return any error messages
             return Error;
