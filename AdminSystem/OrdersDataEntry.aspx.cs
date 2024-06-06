@@ -57,7 +57,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order return
         string OrderReturn = txtOrderReturn.Text;
 
-        //capture the order description
+        //capture the order status
         string OrderStatus = txtOrderStatus.Text;
 
         string Error = "";
