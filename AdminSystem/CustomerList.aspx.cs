@@ -27,9 +27,10 @@ public partial class _1_List : System.Web.UI.Page
 
     void DisplayCustomers()
     {
+        //create an instance of the Customer collection
         clsCustomerCollection Customer = new clsCustomerCollection();
         lstCustomerList.DataSource = Customer.CustomerList;
-        lstCustomerList.DataValueField = "BankDetails";
+        lstCustomerList.DataValueField = "CustomerId";
         lstCustomerList.DataTextField = "CustomerUsername";
         lstCustomerList.DataBind();
     }
@@ -47,7 +48,7 @@ public partial class _1_List : System.Web.UI.Page
         //variable to store the primary key value of the record to be edited
         Int32 CustomerId;
         // If a record has been selected from the list
-        if(lstCustomerList.SelectedIndex != -1)
+        if (lstCustomerList.SelectedIndex != -1)
         {
             // Get the primary Key value of the record to edit
             CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
@@ -56,7 +57,7 @@ public partial class _1_List : System.Web.UI.Page
             // redirect to the edit page
             Response.Redirect("CustomerDataEntry.aspx");
         }
-        else    // if not record has been selected
+        else    // if no record has been selected
         {
             lblError.Text = "Please Select a record from the list to edit";
         }
@@ -119,6 +120,19 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void BtnMainMenu_Click(object sender, EventArgs e)
     {
+        //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCustomer_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsCustomerLogin
+        clsCustomerLogin AnLogin = new clsCustomerLogin();
+
+        //get data from the session object
+        AnLogin = (clsCustomerLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 }

@@ -27,7 +27,7 @@
      justify-content: center;
      align-items: center;
      min-height: 100vh;
-     background: url(https://i.ebayimg.com/00/s/NTc2WDEwMjQ=/z/MnMAAOSwuENePCf7/$_86.JPG) no-repeat;
+     background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cac3c7e-7310-4788-a635-e9e6b224b84d/dhj6pb9-dd9a6611-98e8-40f4-bd4d-9749268db71a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjYWMzYzdlLTczMTAtNDc4OC1hNjM1LWU5ZTZiMjI0Yjg0ZFwvZGhqNnBiOS1kZDlhNjYxMS05OGU4LTQwZjQtYmQ0ZC05NzQ5MjY4ZGI3MWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WbvNAsty81i4I_gPnI1IjNfarwHcvltCCihfH0-WW0M) no-repeat;
      background-size: cover;
      background-position: center;
   }
@@ -44,6 +44,7 @@
      color: #fff;
      border-radius: 10px;
      padding: 40px 40px;
+     color: dodgerblue;
   }
 
   .Label{
@@ -124,6 +125,10 @@
         <asp:Button ID="btnApplyFilter" runat="server" Width="140px" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Text="Apply Filter" OnClick="btnApplyFilter_Click" />
         <asp:Button ID="btnClearFilter" runat="server" Width="140px" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Text="Clear Filter" OnClick="btnClearFilter_Click" />
         <asp:Button ID="BtnMainMenu" runat="server" Width="140px" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Text="Return to Main Menu" OnClick="BtnMainMenu_Click" />
+        </div>
+
+        <div class="Customer">
+        <asp:Button ID="btnCustomer" runat="server" Width="80px" Text="Customer" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" OnClick="btnCustomer_Click" />
         </div>
 
          <div class="Error">

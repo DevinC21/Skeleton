@@ -322,7 +322,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerUsername = "aaaaaaaaaaaaaaaaaaaa";
+            string CustomerUsername = "";
+            CustomerUsername = CustomerUsername.PadRight(20, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
@@ -332,7 +333,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerUsername = "aaaaaaaaaaaaaaaaaaa";
+            string CustomerUsername = "";
+            CustomerUsername = CustomerUsername.PadRight(19, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
@@ -342,7 +344,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerUsername = "aaaaaaaaaaaaaaaaaaaaa";
+            string CustomerUsername = "";
+            CustomerUsername = CustomerUsername.PadRight(21, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreNotEqual(Error, "");
         }
@@ -352,7 +355,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerUsername = "aaaaaaaaaa";
+            string CustomerUsername = "";
+            CustomerUsername = CustomerUsername.PadRight(10, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
@@ -414,7 +418,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerPass = "aaaaaaaaaaaaaaaa";
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(16, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
@@ -424,7 +429,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerPass = "aaaaaaaaaaaaaaa";
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(15, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }
@@ -434,7 +440,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerPass = "aaaaaaaaaaaaaaaaa";
+            string CustomerPass = "";
+            CustomerPass = CustomerPass.PadRight(17, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreNotEqual(Error, "");
         }
@@ -539,7 +546,8 @@ namespace Testing1
         {
             clsCustomer AnCustomer = new clsCustomer();
             String Error = "";
-            string CustomerEmail = "aaaaaaaaaaaaaaaaaaaaaaaaa";
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(25, 'a');
             Error = AnCustomer.Valid(CustomerUsername, CustomerPass, CustomerEmail, DateOfBirth, BankDetails);
             Assert.AreEqual(Error, "");
         }

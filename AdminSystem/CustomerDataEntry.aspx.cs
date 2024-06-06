@@ -41,11 +41,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
+    void DisplayCustomer()
+    {
+        // Create an instance of the customer book
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        // find the record to update
+        Customer.ThisCustomer.Find(CustomerId);
+
+        //display the data for the record
+        txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
+        txtUsername.Text = Customer.ThisCustomer.CustomerUsername.ToString();
+        txtPassword.Text = Customer.ThisCustomer.CustomerPass.ToString();
+        txtEmail.Text = Customer.ThisCustomer.CustomerEmail.ToString();
+        txtDateOfBirth.Text = Customer.ThisCustomer.DateOfBirth.ToString();
+        txtBankDetails.Text = Customer.ThisCustomer.BankDetails.ToString();
+        chkConfirmed.Checked = Customer.ThisCustomer.CustomerConfirmed;
+    }
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
        //create a new instance of clsCustomer
        clsCustomer AnCustomer = new clsCustomer();
-
 
         // capture the username
         String CustomerUsername = txtUsername.Text;
@@ -59,11 +75,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // capture the Bank Details
         String BankDetails = txtBankDetails.Text;
 
-        // capture the Confirmed
-        String CustomerConfirmed = chkConfirmed.Text;
-
         //capture the UserDob
         String DateOfBirth = txtDateOfBirth.Text;
+
+        // capture the Confirmed
+        String CustomerConfirmed = chkConfirmed.Text;
 
         // Variable to store error messages
         String Error = "";
@@ -107,20 +123,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("CustomerList.aspx");
+    }
+
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        //create an instance of the User class
         clsCustomer AnCustomer = new clsCustomer();
 
+        //create a variable to store the primary key
         Int32 CustomerId;
 
+        //create a variable to store the result of the find operation
         Boolean Found = false;
 
+        //get the primary key entered by the Customer
         CustomerId = Convert.ToInt32(txtCustomerId.Text);
 
+        //find the record
         Found = AnCustomer.Find(CustomerId);
 
+        //if found
         if (Found == true)
+
+        {         
+
         {
+
             txtCustomerId.Text = AnCustomer.CustomerId.ToString();
             txtUsername.Text = AnCustomer.CustomerUsername;
             txtPassword.Text = AnCustomer.CustomerPass;
@@ -130,8 +162,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkConfirmed.Checked = AnCustomer.CustomerConfirmed;
         }
     }
+
+    protected void chkCustomerConfirmed_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
     protected void BtnMainMenu_Click(object sender, EventArgs e)
     {
+        //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
 }

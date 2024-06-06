@@ -21,7 +21,7 @@
        justify-content: center;
        align-items: center;
        min-height: 100vh;
-       background: url(https://images.hdqwalls.com/download/ferrari-458-italia-rear-cgi-pm-1440x900.jpg) no-repeat;
+       background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cac3c7e-7310-4788-a635-e9e6b224b84d/dhj6oo2-1394d7a6-9f6e-4c73-b6bd-5f8b9be6f965.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjYWMzYzdlLTczMTAtNDc4OC1hNjM1LWU5ZTZiMjI0Yjg0ZFwvZGhqNm9vMi0xMzk0ZDdhNi05ZjZlLTRjNzMtYjZiZC01ZjhiOWJlNmY5NjUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.EOrkuUxlXZpdkdsGYCAPtQHsbBm6bs1vJPFXF5qerwI) no-repeat;
        background-size: cover;
        background-position: center;
     }
@@ -37,6 +37,7 @@
        padding: 30px 40px;
        display: flex;
        flex-direction: column;
+       color: dodgerblue;
     }
 
     .CustomerDataEntry{
@@ -150,63 +151,68 @@
          <div class="Labels">
 
              <div class="CustomerId">
-             <asp:Label ID="lblCustomerId" runat="server" style="z-index: 1; left: 31px; top: 102px; position: absolute; bottom: 742px; width: 102px;" Text="Customer Id" height="19px"></asp:Label>
-             <asp:TextBox ID="txtCustomerId" runat="server" style="z-index: 1; left: 169px; top: 96px; position: absolute; right: 268px;" height="22px" width="128px"></asp:TextBox>
+                 <asp:Label ID="lblCustomer" runat="server" Text="Customer Id"></asp:Label>
+             <asp:TextBox ID="txtCustomerId" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
 
              <div class="CustomerUsername">
-             <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 31px; top: 146px; position: absolute" Text="Username" height="19px" width="102px"></asp:Label>
-             <asp:TextBox ID="txtUsername" runat="server" style="z-index: 1; top: 143px; position: absolute; left: 169px" height="22px" width="128px"></asp:TextBox>
+                 <asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label>
+                 <asp:TextBox ID="txtUsername" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
 
              <div class="CustomerPassword">
-             <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 31px; top: 187px; position: absolute" Text="Password" height="19px" width="102px"></asp:Label>
-             <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 169px; top: 183px; position: absolute" height="22px" width="128px"></asp:TextBox>
+                 <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
+                 <asp:TextBox ID="txtPassword" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
 
              <div class="CustomerEmail">
-             <asp:Label ID="lblEmail" runat="server" style="z-index: 1; left: 31px; top: 233px; position: absolute" Text="Email" height="19px" width="102px"></asp:Label>
-             <asp:TextBox ID="txtEmail" runat="server" style="z-index: 1; left: 169px; top: 229px; position: absolute" height="22px" width="128px"></asp:TextBox>
+                 <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
+                 <asp:TextBox ID="txtEmail" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
 
              <div class="DateOfBirth">
-             <asp:Label ID="lblDateOfBirth" runat="server" style="z-index: 1; left: 31px; top: 278px; position: absolute" Text="Date Of Birth" width="102px"></asp:Label>
-             <asp:TextBox ID="txtDateOfBirth" runat="server" style="z-index: 1; left: 169px; top: 274px; position: absolute" height="22px" width="128px"></asp:TextBox>
+                 <asp:Label ID="lblDateOfBirth" runat="server" Text="Date Of Birth"></asp:Label>
+                 <asp:TextBox ID="txtDateOfBirth" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
 
              <div class="BankDetails">
-             <asp:Label ID="lblBankDetails" runat="server" style="z-index: 1; left: 31px; top: 324px; position: absolute" Text="Bank Details" height="19px" width="102px"></asp:Label>
-             <asp:TextBox ID="txtBankDetails" runat="server" style="z-index: 1; left: 169px; top: 320px; position: absolute" height="22px" width="128px"></asp:TextBox>
-             </div>
-
+                 <asp:Label ID="lblBankDetails" runat="server" Text="Bank Details"></asp:Label>
+                 <asp:TextBox ID="txtBankDetails" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
         
              <div class="CustomerConfirmed">
-             <asp:CheckBox ID="chkConfirmed" runat="server" style="z-index: 1; left: 195px; top: 373px; position: absolute" Text="Confirmed" />
+                 <asp:CheckBox ID="chkConfirmed" runat="server" Text="Confirmed?"/>
              </div>
       
              <div class="Error">
-                  <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 32px; top: 537px; position: absolute"></asp:Label>
+                 <asp:Label ID="lblError" runat="server"></asp:Label>
+             </div>
+            
              </div>
 
+            <div class="Buttons1">
+
              <div class="ButtonsOK">
-                 <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 32px; top: 442px; position: absolute; right: 606px;" Text="OK" height="26px" width="60px" />
+                 <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="60px" />
              </div>
 
             <div class="ButtonCancel">
-                <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 121px; top: 442px; position: absolute" Text="Cancel" />
+                <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="100px" />
+            </div>
             </div>
 
+            <div class="Buttons2">
+
             <div class="ButtonFind">
-                <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 348px; top: 97px; position: absolute" Text="Find" />
+                <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="80px" />
             </div>
 
             <div class="ButtonMainMenu">
-                 <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; left: 280px; top: 442px; position: absolute; width: 163px;" Text="Return to Main Menu" OnClick="BtnMainMenu_Click"/>
+                 <asp:Button ID="btnMainMenu" runat="server" Text="Return to Main Menu" OnClick="BtnMainMenu_Click"  BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="160px"/>
             </div>
-        
+
+            </div>
             </div>
     </form>
-
 </body>
 </html>
