@@ -125,7 +125,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a variable to store the result of the find operation
         Boolean Found = false;
 
-        //get the primary key entered by the user
+        //get the primary key entered by the Customer
         CustomerId = Convert.ToInt32(txtCustomerId.Text);
 
         //find the record
