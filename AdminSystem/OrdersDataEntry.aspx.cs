@@ -57,7 +57,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order return
         string OrderReturn = txtOrderReturn.Text;
 
-        //capture the order description
+        //capture the order status
         string OrderStatus = txtOrderStatus.Text;
 
         string Error = "";
@@ -126,7 +126,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-   
+
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         //redirect back to the main page

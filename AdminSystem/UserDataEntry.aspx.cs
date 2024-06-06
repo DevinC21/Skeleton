@@ -78,7 +78,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
 
         //validate the data
-        Error = AnUser.Valid(UserPrivileges, UserDob, UserName);
+        Error = AnUser.Valid(UserPrivileges, UserDob, UserName, UserContactNumber, CustomerID);
         if (Error == "")
         {
             //capture the UserID

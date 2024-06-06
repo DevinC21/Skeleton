@@ -18,13 +18,13 @@ public partial class _1_List : System.Web.UI.Page
             DisplayOrders();
         }
         //create a new instance of clsUserLogin
-        clsOrdersLogin AnLogin = new clsOrdersLogin();
+        //clsOrdersLogin AnLogin = new clsOrdersLogin();
 
         //get data from the session object
-        AnLogin = (clsOrdersLogin)Session["AnLogin"];
+        //AnLogin = (clsOrdersLogin)Session["AnLogin"];
 
         //display the login name
-        Response.Write("Logged in as: " + AnLogin.LoginName);
+        //Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 
     void DisplayOrders()
@@ -99,6 +99,18 @@ public partial class _1_List : System.Web.UI.Page
     {
         Response.Redirect("TeamMainMenu.aspx");
 
+    }
+
+    protected void btnOrders_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsUserLogin
+        clsOrdersLogin AnLogin = new clsOrdersLogin();
+
+        //get data from the session object
+        AnLogin = (clsOrdersLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 }
 

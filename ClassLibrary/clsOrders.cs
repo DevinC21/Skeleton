@@ -124,34 +124,34 @@ namespace ClassLibrary
             //create a temporary variable to store the date values
             DateTime DateTemp;
 
-            //if the Username is less than 3 characters
+            //if the order fullname is less than 3 characters
             if (orderFullName.Length <= 2)
             {
                 //record the error
                 Error = Error + "The Order FullName must be more than 2 characters. ";
             }
 
-            //if the Username is greater than 20 characters
+            //if the order fullname is greater than 20 characters
             if (orderFullName.Length >= 21)
             {
                 //record the error
                 Error = Error + "The Order FullName must be less than 21 characters. ";
             }
 
-            //if the User Privileges is less than 3 characters
+            //if the order description is less than 3 characters
             if (orderDescription.Length <= 2)
             {
                 //record the error
                 Error = Error + "The Order Description must contain at least 4 characters. ";
             }
 
-            //if the User Privileges is greater than 12 characters
+            //if the order description is greater than 12 characters
             if (orderDescription.Length >= 13)
             {
                 //record the error
                 Error = Error + "The Order Description must be less than 13 characters. ";
             }
-
+            //if the order return is greater than 2 characters
             if (orderReturn.Length <= 1)
             {
                 //record the error
@@ -164,14 +164,14 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Order Return must be less than 11 characters. ";
             }
-
+            //if the order status is greater than 10 characters
             if (orderStatus.Length <= 5)
             {
                 //record the error
                 Error = Error + "The Order Status must contain at least 6 characters. ";
             }
 
-            //if the User Privileges is greater than 5 characters
+            //if the order status is greater than 5 characters
             if (orderStatus.Length >= 16)
             {
                 //record the error
@@ -186,7 +186,7 @@ namespace ClassLibrary
 
             try
             {
-                //copy the UserDob value to the DateTemp variable
+                //copy the orderDate value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(orderDate);
 
                 //check to see if the date is more than 1 years ago
