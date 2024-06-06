@@ -25,21 +25,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
         }
     }
-    void DisplayCustomer()
-    {
-        // Create an instance of the customer book
-        clsCustomerCollection Customer = new clsCustomerCollection();
-        // find the record to update
-        Customer.ThisCustomer.Find(CustomerId);
-        txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
-        txtUsername.Text = Customer.ThisCustomer.CustomerUsername.ToString();
-        txtPassword.Text = Customer.ThisCustomer.CustomerPass.ToString();
-        txtEmail.Text = Customer.ThisCustomer.CustomerEmail.ToString();
-        txtDateOfBirth.Text = Customer.ThisCustomer.DateOfBirth.ToString();
-        txtBankDetails.Text = Customer.ThisCustomer.BankDetails.ToString();
-        chkConfirmed.Checked = Customer.ThisCustomer.CustomerConfirmed;
-
-    }
 
     void DisplayCustomer()
     {
@@ -60,8 +45,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-       //create a new instance of clsCustomer
-       clsCustomer AnCustomer = new clsCustomer();
+        //create a new instance of clsCustomer
+        clsCustomer AnCustomer = new clsCustomer();
 
         // capture the username
         String CustomerUsername = txtUsername.Text;
@@ -149,26 +134,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //if found
         if (Found == true)
 
-        {         
-
         {
-
-            txtCustomerId.Text = AnCustomer.CustomerId.ToString();
-            txtUsername.Text = AnCustomer.CustomerUsername;
-            txtPassword.Text = AnCustomer.CustomerPass;
-            txtEmail.Text = AnCustomer.CustomerEmail;
-            txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
-            txtBankDetails.Text = AnCustomer.BankDetails.ToString();
-            chkConfirmed.Checked = AnCustomer.CustomerConfirmed;
+                txtCustomerId.Text = AnCustomer.CustomerId.ToString();
+                txtUsername.Text = AnCustomer.CustomerUsername;
+                txtPassword.Text = AnCustomer.CustomerPass;
+                txtEmail.Text = AnCustomer.CustomerEmail;
+                txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
+                txtBankDetails.Text = AnCustomer.BankDetails.ToString();
+                chkConfirmed.Checked = AnCustomer.CustomerConfirmed;
         }
     }
 
-    protected void chkCustomerConfirmed_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void BtnMainMenu_Click(object sender, EventArgs e)
+    protected void btnMainMenu_Click(object sender, EventArgs e)
     {
         //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
