@@ -108,6 +108,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("CustomerList.aspx");
+    }
+
     protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the User class
@@ -127,8 +133,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //if found
         if (Found == true)
-        {
-            //display the values of the properties in the form
+        {         
             txtCustomerId.Text = AnCustomer.CustomerId.ToString();
             txtUsername.Text = AnCustomer.CustomerUsername;
             txtPassword.Text = AnCustomer.CustomerPass;
@@ -139,10 +144,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+    protected void chkCustomerConfirmed_CheckedChanged(object sender, EventArgs e)
     {
-        //redirect back to the main page
-        Response.Redirect("CustomerList.aspx");
+
     }
 
     protected void BtnMainMenu_Click(object sender, EventArgs e)

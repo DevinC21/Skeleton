@@ -128,7 +128,7 @@
         </div>
 
         <div class="Customer">
-        <asp:Button ID="btnCustomer" runat="server" Width="60px" Text="Customer" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" OnClick="btnCustomer_Click" />
+        <asp:Button ID="btnCustomer" runat="server" Width="80px" Text="Customer" BackColor="Transparent" BorderStyle="Outset" ForeColor="White" OnClick="btnCustomer_Click" />
         </div>
 
          <div class="Error">
