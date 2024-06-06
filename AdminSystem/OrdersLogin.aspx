@@ -48,6 +48,7 @@
         align-items: center;
         width: 100%;
         height: 50px;
+        
      }
 
      .LoginPassword{
@@ -56,6 +57,7 @@
         align-items: center;
         width: 100%;
         height: 50px;
+        
      }
 
      .Name{
@@ -65,6 +67,7 @@
         width: 100%;
         height: 100%;
         padding-bottom: 20px;
+       
      }
 
      .Password{
@@ -74,6 +77,7 @@
         width: 100%;
         height: 100%;
         padding-bottom: 20px;
+       
      }
 
      .Button{

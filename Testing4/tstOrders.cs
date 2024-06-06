@@ -164,7 +164,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //check the User ID
+            //check the Order ID
             if (AnOrders.OrderID != 11)
             {
                 OK = false;
@@ -192,7 +192,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //check the User Contact Number
+            //check the Order FullName
             if (AnOrders.OrderFullName != "Peter Finkley")
             {
                 OK = false;
@@ -220,7 +220,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //check the User Privileges
+            //check the Order Description
             if (AnOrders.OrderDescription != "good")
             {
                 OK = false;
@@ -248,7 +248,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //check the User DOB
+            //check the Order Date
             if (AnOrders.OrderDate != Convert.ToDateTime("03/05/2024"))
             {
                 OK = false;
@@ -332,7 +332,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrders.Find(OrderID);
 
-            //check the Username
+            //check the Order Status
             if (AnOrders.OrderStatus != "Accepted")
             {
                 OK = false;
