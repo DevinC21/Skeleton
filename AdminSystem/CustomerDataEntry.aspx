@@ -208,7 +208,7 @@
             </div>
 
             <div class="ButtonMainMenu">
-                 <asp:Button ID="btnMainMenu" runat="server" Text="Return to Main Menu" OnClick="BtnMainMenu_Click"  BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="160px"/>
+                 <asp:Button ID="btnMainMenu" runat="server" Text="Return to Main Menu"  BackColor="Transparent" BorderStyle="Outset" ForeColor="White" Height="30px" Width="160px" OnClick="btnMainMenu_Click"/>
             </div>
 
             </div>
