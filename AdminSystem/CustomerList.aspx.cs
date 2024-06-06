@@ -27,6 +27,7 @@ public partial class _1_List : System.Web.UI.Page
 
     void DisplayCustomers()
     {
+        //create an instance of the Customer collection
         clsCustomerCollection Customer = new clsCustomerCollection();
         lstCustomerList.DataSource = Customer.CustomerList;
         lstCustomerList.DataValueField = "CustomerId";
@@ -119,6 +120,19 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void BtnMainMenu_Click(object sender, EventArgs e)
     {
+        //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCustomer_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsCustomerLogin
+        clsCustomerLogin AnLogin = new clsCustomerLogin();
+
+        //get data from the session object
+        AnLogin = (clsCustomerLogin)Session["AnLogin"];
+
+        //display the login name
+        Response.Write("Logged in as: " + AnLogin.LoginName);
     }
 }

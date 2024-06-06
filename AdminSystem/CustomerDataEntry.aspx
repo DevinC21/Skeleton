@@ -157,7 +157,7 @@
 
              <div class="CustomerUsername">
                  <asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label>
-                 <asp:TextBox ID="txtCustomerUsername" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
+                 <asp:TextBox ID="txtUsername" runat="server" BackColor="Transparent" BorderStyle="Outset" ForeColor="White"></asp:TextBox>
              </div>
 
              <div class="CustomerPassword">

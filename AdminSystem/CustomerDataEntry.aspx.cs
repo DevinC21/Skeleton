@@ -33,8 +33,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // find the record to update
         Customer.ThisCustomer.Find(CustomerId);
 
+        //display the data for the record
         txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
-        txtCustomerUsername.Text = Customer.ThisCustomer.CustomerUsername.ToString();
+        txtUsername.Text = Customer.ThisCustomer.CustomerUsername.ToString();
         txtPassword.Text = Customer.ThisCustomer.CustomerPass.ToString();
         txtEmail.Text = Customer.ThisCustomer.CustomerEmail.ToString();
         txtDateOfBirth.Text = Customer.ThisCustomer.DateOfBirth.ToString();
@@ -48,7 +49,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
        clsCustomer AnCustomer = new clsCustomer();
 
         // capture the username
-        String CustomerUsername = txtCustomerUsername.Text;
+        String CustomerUsername = txtUsername.Text;
 
         // capture the password
         String CustomerPass = txtPassword.Text;
@@ -109,20 +110,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        //create an instance of the User class
         clsCustomer AnCustomer = new clsCustomer();
 
+        //create a variable to store the primary key
         Int32 CustomerId;
 
+        //create a variable to store the result of the find operation
         Boolean Found = false;
 
+        //get the primary key entered by the user
         CustomerId = Convert.ToInt32(txtCustomerId.Text);
 
+        //find the record
         Found = AnCustomer.Find(CustomerId);
 
+        //if found
         if (Found == true)
         {
+            //display the values of the properties in the form
             txtCustomerId.Text = AnCustomer.CustomerId.ToString();
-            txtCustomerUsername.Text = AnCustomer.CustomerUsername;
+            txtUsername.Text = AnCustomer.CustomerUsername;
             txtPassword.Text = AnCustomer.CustomerPass;
             txtEmail.Text = AnCustomer.CustomerEmail;
             txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
@@ -139,6 +147,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void BtnMainMenu_Click(object sender, EventArgs e)
     {
+        //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
 }
